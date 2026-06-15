@@ -247,6 +247,57 @@ body {
 }
 .field__hint { font-size: .75rem; color: var(--color-text-muted); margin-top: .3rem; }
 
+/* ── Input Row 4-col ── */
+.input-row--4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 700px) { .input-row--4 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 400px) { .input-row--4 { grid-template-columns: 1fr; } }
+
+/* ── pH Severity Bar ── */
+.ph-severity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .6rem;
+  border-radius: var(--radius-sm);
+  padding: .75rem 1rem;
+  margin-bottom: 1rem;
+  background: var(--color-gray-bg);
+  border: 1px solid var(--color-border);
+  transition: background var(--transition), border-color var(--transition);
+}
+.ph-severity__left { display: flex; align-items: baseline; gap: .6rem; }
+.ph-severity__label { font-size: .78rem; color: var(--color-text-muted); font-weight: 600; }
+.ph-severity__value {
+  font-family: var(--font-mono);
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--color-text);
+  transition: color var(--transition);
+}
+.ph-severity__right { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
+.ph-severity__badge {
+  font-size: .8rem;
+  font-weight: 700;
+  padding: .25rem .75rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.ph-severity__detail { font-size: .78rem; color: var(--color-text-muted); line-height: 1.4; }
+
+.ph-severity[data-level="critical"] { background: var(--color-red-bg);   border-color: var(--color-red-border); }
+.ph-severity[data-level="severe"]   { background: var(--color-amber-bg); border-color: var(--color-amber-border); }
+.ph-severity[data-level="moderate"] { background: var(--color-amber-bg); border-color: var(--color-amber-border); }
+
+.ph-severity[data-level="critical"] .ph-severity__value { color: var(--color-red); }
+.ph-severity[data-level="severe"]   .ph-severity__value { color: var(--color-amber); }
+.ph-severity[data-level="moderate"] .ph-severity__value { color: #F57C00; }
+
+.ph-severity[data-level="critical"] .ph-severity__badge { background: var(--color-red);   color: #fff; }
+.ph-severity[data-level="severe"]   .ph-severity__badge { background: var(--color-amber); color: #fff; }
+.ph-severity[data-level="moderate"] .ph-severity__badge { background: #F57C00;            color: #fff; }
+.ph-severity[data-level="mild"]     .ph-severity__badge { background: var(--color-gray);  color: #fff; }
+
 /* ── Calc Button ── */
 .calc-btn {
   width: 100%;

@@ -13,11 +13,11 @@ let currentVd = 0.3;
 let currentScenario = null;
 
 // ── DOM refs ──
-const btnAcute    = document.getElementById('btn-acute');
-const btnChronic  = document.getElementById('btn-chronic');
-const calcBtn     = document.getElementById('calc-btn');
-const resultSec   = document.getElementById('result-section');
-const checklistSec= document.getElementById('checklist-section');
+const btnAcute     = document.getElementById('btn-acute');
+const btnChronic   = document.getElementById('btn-chronic');
+const calcBtn      = document.getElementById('calc-btn');
+const resultSec    = document.getElementById('result-section');
+const checklistSec = document.getElementById('checklist-section');
 
 // ── Vd Toggle ──
 [btnAcute, btnChronic].forEach(btn => {
@@ -43,10 +43,70 @@ function updateScenarioUI() {
     el.classList.toggle('hidden', currentScenario !== 'B'));
 }
 
+// ── pH Severity ──
+function getPhSeverity(pH) {
+  if (pH < 7.10) return {
+    level:  'critical',
+    label:  '重度酸中毒（pH < 7.10）',
+    detail: 'BICARICU-2 分層：此組 AKI 更嚴重，KRT 獲益可能更顯著；BICAR-ICU 納入範圍內',
+    scenarioHint: { ok: ['A'], warn: 'B', warnMsg: 'pH < 7.10 符合場景 A（pH ≤ 7.20 + AKI），建議優先選用場景 A' }
+  };
+  if (pH <= 7.20) return {
+    level:  'severe',
+    label:  '中重度酸中毒（pH 7.10–7.20）',
+    detail: '符合 BICAR-ICU 及 BICARICU-2 納入標準（pH ≤ 7.20）；合併 AKI stage 2–3 者 KRT 獲益最強',
+    scenarioHint: { ok: ['A', 'B'], warn: null }
+  };
+  if (pH < 7.30) return {
+    level:  'moderate',
+    label:  '中度酸中毒（pH 7.20–7.30）',
+    detail: 'SODa-BIC（NEJM 2026）族群範圍；此 pH 僅在合併升壓劑時有 RCT 支持，且主要終點 NS',
+    scenarioHint: { ok: ['B', 'D'], warn: 'A', warnMsg: 'pH > 7.20，超出場景 A（BICAR-ICU/BICARICU-2）納入標準，建議改選場景 B' }
+  };
+  return {
+    level:  'mild',
+    label:  'pH ≥ 7.30（超出 RCT 納入範圍）',
+    detail: '目前無 RCT 支持在此 pH 常規使用 NaHCO₃；若仍計算，建議審慎評估臨床適應症',
+    scenarioHint: { ok: ['D'], warn: null }
+  };
+}
+
+function renderPhSeverity(pH) {
+  const bar     = document.getElementById('ph-severity');
+  const display = document.getElementById('ph-display');
+  const badge   = document.getElementById('ph-badge');
+  const detail  = document.getElementById('ph-detail');
+
+  if (isNaN(pH)) {
+    bar.classList.add('hidden');
+    return null;
+  }
+
+  const s = getPhSeverity(pH);
+  bar.dataset.level     = s.level;
+  display.textContent   = pH.toFixed(2);
+  badge.textContent     = s.label;
+  detail.textContent    = s.detail;
+  bar.classList.remove('hidden');
+  return s;
+}
+
+function renderPhMismatch(s, scenario) {
+  const alert = document.getElementById('ph-mismatch-alert');
+  const text  = document.getElementById('ph-mismatch-text');
+  if (!s || !scenario || !s.scenarioHint.warn || s.scenarioHint.warn !== scenario) {
+    alert.classList.add('hidden');
+    return;
+  }
+  text.textContent = '⚠️ 場景與 pH 不符：' + s.scenarioHint.warnMsg;
+  alert.classList.remove('hidden');
+}
+
 // ── Main Calculation ──
 calcBtn.addEventListener('click', calculate);
 
 function calculate() {
+  const pH         = parseFloat(document.getElementById('ph').value);
   const weight     = parseFloat(document.getElementById('weight').value);
   const actualHco3 = parseFloat(document.getElementById('actual-hco3').value);
   const targetHco3 = parseFloat(document.getElementById('target-hco3').value);
@@ -65,7 +125,10 @@ function calculate() {
     return;
   }
   if (targetHco3 > 22) {
-    if (!confirm(`目標 HCO₃⁻ ${targetHco3} mEq/L 偏高（試驗中目標為 ≤ 18–20）\n建議不超過 20 mEq/L 以避免過度矯正。\n繼續計算？`)) return;
+    if (!confirm(
+      `目標 HCO₃⁻ ${targetHco3} mEq/L 偏高（試驗目標 ≤ 18–20）\n` +
+      `建議不超過 20 mEq/L 以避免過度矯正。\n繼續計算？`
+    )) return;
   }
 
   const delta    = targetHco3 - actualHco3;
@@ -73,13 +136,17 @@ function calculate() {
   const firstMeq  = totalMeq / 2;
   const secondMeq = totalMeq / 2;
 
-  // Display formula
+  // pH severity
+  const severity = renderPhSeverity(pH);
+  renderPhMismatch(severity, currentScenario);
+
+  // Formula display
   document.getElementById('formula-box').innerHTML =
     `所需 NaHCO₃ = <em>Vd</em> × <em>體重</em> × (<em>目標 HCO₃⁻</em> − <em>實測 HCO₃⁻</em>)<br>` +
     `= <em>${currentVd}</em> × <em>${weight} kg</em> × (<em>${targetHco3}</em> − <em>${actualHco3}</em>) mEq/L<br>` +
     `= <em>${totalMeq.toFixed(1)} mEq</em>　→　先給 ½ = <em>${firstMeq.toFixed(1)} mEq</em>，1–4h 後複查 ABG 再給餘 ½`;
 
-  // Main result tiles
+  // Result tiles
   document.getElementById('r-total').textContent  = totalMeq.toFixed(1);
   document.getElementById('r-first').textContent  = firstMeq.toFixed(1);
   document.getElementById('r-second').textContent = secondMeq.toFixed(1);
@@ -89,12 +156,13 @@ function calculate() {
   renderVials('second', secondMeq);
   renderVials('total',  totalMeq);
 
-  // Na+ warning (each mEq NaHCO₃ delivers 1 mEq Na+)
+  // Na+ load warning
   const naAlert     = document.getElementById('na-alert');
   const naAlertText = document.getElementById('na-alert-text');
   if (firstMeq > NA_WARN_MEQ) {
     naAlertText.textContent =
-      `第一劑鈉負荷約 ${firstMeq.toFixed(0)} mEq Na⁺（等同 ${(firstMeq * 58.44 / 1000).toFixed(1)} g NaCl）。` +
+      `第一劑鈉負荷約 ${firstMeq.toFixed(0)} mEq Na⁺` +
+      `（≈ ${(firstMeq * 58.44 / 1000).toFixed(1)} g NaCl）。` +
       `基礎血鈉偏高者（Na⁺ > 140 mmol/L）需密切監測；建議慢速輸注並分次給予。`;
     naAlert.classList.remove('hidden');
   } else {
@@ -109,14 +177,13 @@ function calculate() {
   checklistSec.classList.remove('hidden');
   updateScenarioUI();
 
-  // Scroll to results
   resultSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function renderVials(slot, meq) {
-  const volMl    = meq / MEQ_PER_ML;                    // volume needed (mL)
-  const vialsNeeded = Math.ceil(volMl / VIAL_ML);        // whole vials to prepare
-  const usedVol  = volMl.toFixed(1);                    // exact mL to inject
+  const volMl      = meq / MEQ_PER_ML;
+  const vialsNeeded = Math.ceil(volMl / VIAL_ML);
+  const usedVol    = volMl.toFixed(1);
 
   const countEl  = document.getElementById(`v-${slot}-count`);
   const detailEl = document.getElementById(`v-${slot}-detail`);

@@ -89,7 +89,15 @@
         <p class="vd-toggle__hint">急性酸中毒選 0.3；慢性 HCO₃⁻ 長期偏低（CKD / 慢性腸液流失）選 0.5</p>
       </div>
 
-      <div class="input-row">
+      <div class="input-row input-row--4">
+        <div class="field">
+          <label class="field__label" for="ph">動脈血 pH</label>
+          <div class="field__wrap">
+            <input class="field__input" type="number" id="ph" min="6.80" max="7.45" step="0.01" placeholder="7.15">
+            <span class="field__unit">—</span>
+          </div>
+          <p class="field__hint">用於嚴重度分層與場景核對</p>
+        </div>
         <div class="field">
           <label class="field__label" for="weight">體重</label>
           <div class="field__wrap">
@@ -129,6 +137,23 @@
         <strong>⚠️ 院內心跳停止：不建議常規使用 NaHCO₃</strong><br>
         BIHCA（JAMA 2026，N=779，雙盲）：ROSC 39% vs 37%，RR 1.05（95% CI 0.88–1.24），P=.62。
         現行 ALS 指引不支持常規使用。若仍決定使用，劑量供參考。
+      </div>
+
+      <!-- pH 嚴重度分層 -->
+      <div class="ph-severity hidden" id="ph-severity">
+        <div class="ph-severity__left">
+          <span class="ph-severity__label">動脈血 pH</span>
+          <span class="ph-severity__value" id="ph-display">—</span>
+        </div>
+        <div class="ph-severity__right">
+          <span class="ph-severity__badge" id="ph-badge">—</span>
+          <span class="ph-severity__detail" id="ph-detail">—</span>
+        </div>
+      </div>
+
+      <!-- 場景與 pH 不符警示 -->
+      <div class="alert alert--amber hidden" id="ph-mismatch-alert">
+        <span id="ph-mismatch-text"></span>
       </div>
 
       <!-- 公式展示 -->
