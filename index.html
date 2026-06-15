@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NaHCO₃ 劑量計算器</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="header__inner">
+      <div class="header__brand">
+        <span class="header__formula">NaHCO₃</span>
+        <div>
+          <h1 class="header__title">代謝性酸中毒劑量計算器</h1>
+          <p class="header__subtitle">基於 BICAR-ICU / BICARICU-2 / SODa-BIC / BIHCA · 2026 年 6 月更新</p>
+        </div>
+      </div>
+      <span class="header__version">v1.0.0</span>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- ── 1. 臨床場景 ── -->
+    <section class="card">
+      <h2 class="card__title">
+        <span class="card__step">1</span>
+        臨床場景
+      </h2>
+      <div class="scenario-grid">
+
+        <label class="scenario" for="s-a">
+          <input type="radio" name="scenario" id="s-a" value="A">
+          <div class="scenario__body">
+            <span class="badge badge--green">✅ 最強證據</span>
+            <p class="scenario__name">pH ≤ 7.20 + AKI（KDIGO stage 2–3）</p>
+            <p class="scenario__evidence">BICARICU-2 KRT NNT ≈ 6.5 · BICAR-ICU AKI 分層 Day-28 死亡率↓</p>
+          </div>
+        </label>
+
+        <label class="scenario" for="s-b">
+          <input type="radio" name="scenario" id="s-b" value="B">
+          <div class="scenario__body">
+            <span class="badge badge--amber">⚠️ 可考慮</span>
+            <p class="scenario__name">pH &lt; 7.30 + 升壓劑使用</p>
+            <p class="scenario__evidence">SODa-BIC（NEJM 2026）雙盲 · MAKE30 NS · KRT 趨勢↓（NS）</p>
+          </div>
+        </label>
+
+        <label class="scenario" for="s-c">
+          <input type="radio" name="scenario" id="s-c" value="C">
+          <div class="scenario__body">
+            <span class="badge badge--red">❌ 不建議常規使用</span>
+            <p class="scenario__name">院內心跳停止（IHCA）</p>
+            <p class="scenario__evidence">BIHCA（JAMA 2026，N=779 雙盲）· ROSC NS（RR 1.05，P=.62）</p>
+          </div>
+        </label>
+
+        <label class="scenario" for="s-d">
+          <input type="radio" name="scenario" id="s-d" value="D">
+          <div class="scenario__body">
+            <span class="badge badge--gray">— 其他 / 僅計算</span>
+            <p class="scenario__name">其他代謝性酸中毒</p>
+            <p class="scenario__evidence">僅計算補充劑量，不附臨床建議</p>
+          </div>
+        </label>
+
+      </div>
+    </section>
+
+    <!-- ── 2. 輸入 ── -->
+    <section class="card">
+      <h2 class="card__title">
+        <span class="card__step">2</span>
+        輸入數值
+      </h2>
+
+      <div class="vd-toggle">
+        <span class="vd-toggle__label">分布容積（Vd）</span>
+        <div class="vd-toggle__btns">
+          <button class="vd-btn vd-btn--active" data-vd="0.3" id="btn-acute">急性　Vd = 0.3</button>
+          <button class="vd-btn" data-vd="0.5" id="btn-chronic">慢性　Vd = 0.5</button>
+        </div>
+        <p class="vd-toggle__hint">急性酸中毒選 0.3；慢性 HCO₃⁻ 長期偏低（CKD / 慢性腸液流失）選 0.5</p>
+      </div>
+
+      <div class="input-row">
+        <div class="field">
+          <label class="field__label" for="weight">體重</label>
+          <div class="field__wrap">
+            <input class="field__input" type="number" id="weight" min="20" max="250" step="0.5" placeholder="60">
+            <span class="field__unit">kg</span>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field__label" for="actual-hco3">實測 HCO₃⁻</label>
+          <div class="field__wrap">
+            <input class="field__input" type="number" id="actual-hco3" min="1" max="30" step="0.5" placeholder="10">
+            <span class="field__unit">mEq/L</span>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field__label" for="target-hco3">目標 HCO₃⁻</label>
+          <div class="field__wrap">
+            <input class="field__input" type="number" id="target-hco3" min="10" max="24" step="0.5" value="18">
+            <span class="field__unit">mEq/L</span>
+          </div>
+          <p class="field__hint">建議 ≤ 18；勿正常化至 24</p>
+        </div>
+      </div>
+
+      <button class="calc-btn" id="calc-btn">計算</button>
+    </section>
+
+    <!-- ── 3. 結果 ── -->
+    <section class="card card--result hidden" id="result-section">
+      <h2 class="card__title">
+        <span class="card__step">3</span>
+        計算結果
+      </h2>
+
+      <!-- IHCA 警示 -->
+      <div class="alert alert--red hidden" id="ihca-alert">
+        <strong>⚠️ 院內心跳停止：不建議常規使用 NaHCO₃</strong><br>
+        BIHCA（JAMA 2026，N=779，雙盲）：ROSC 39% vs 37%，RR 1.05（95% CI 0.88–1.24），P=.62。
+        現行 ALS 指引不支持常規使用。若仍決定使用，劑量供參考。
+      </div>
+
+      <!-- 公式展示 -->
+      <div class="formula-box" id="formula-box"></div>
+
+      <!-- 主要數字 -->
+      <div class="result-row">
+        <div class="result-tile result-tile--primary">
+          <p class="result-tile__label">總需求量</p>
+          <p class="result-tile__value" id="r-total">—</p>
+          <p class="result-tile__unit">mEq</p>
+        </div>
+        <div class="result-tile">
+          <p class="result-tile__label">第一劑 ½</p>
+          <p class="result-tile__value" id="r-first">—</p>
+          <p class="result-tile__unit">mEq</p>
+        </div>
+        <div class="result-tile">
+          <p class="result-tile__label">第二劑 ½（ABG 後）</p>
+          <p class="result-tile__value" id="r-second">—</p>
+          <p class="result-tile__unit">mEq</p>
+        </div>
+      </div>
+
+      <!-- 安瓿換算 -->
+      <div class="vial-box">
+        <h3 class="vial-box__title">
+          台灣安瓿換算
+          <span class="vial-box__spec">70 mg/mL · 20 mL/支 = <strong>16.67 mEq/支</strong></span>
+        </h3>
+        <div class="vial-grid">
+          <div class="vial-tile vial-tile--highlight">
+            <p class="vial-tile__label">第一劑</p>
+            <p class="vial-tile__vials" id="v-first-count">—</p>
+            <p class="vial-tile__detail" id="v-first-detail">—</p>
+          </div>
+          <div class="vial-tile">
+            <p class="vial-tile__label">第二劑（ABG 後）</p>
+            <p class="vial-tile__vials" id="v-second-count">—</p>
+            <p class="vial-tile__detail" id="v-second-detail">—</p>
+          </div>
+          <div class="vial-tile">
+            <p class="vial-tile__label">合計安瓿數</p>
+            <p class="vial-tile__vials" id="v-total-count">—</p>
+            <p class="vial-tile__detail" id="v-total-detail">—</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Na⁺ 負荷警示 -->
+      <div class="alert alert--amber hidden" id="na-alert">
+        <strong>⚠️ 鈉負荷提醒</strong>：<span id="na-alert-text"></span>
+      </div>
+
+      <!-- 給藥步驟 -->
+      <ol class="steps" id="steps-box">
+        <li class="steps__item">給予<strong>第一劑（½ 總量）</strong>，建議緩慢靜脈輸注</li>
+        <li class="steps__item"><strong>1–4 小時後複查 ABG</strong>，確認 pH ≥ 7.30</li>
+        <li class="steps__item">pH 仍 &lt; 7.30 且無鹼中毒（pH ≤ 7.45）→ 給予<strong>第二劑（½ 總量）</strong></li>
+        <li class="steps__item">每日最大量：BICARICU 方案建議 ≤ 1000 mL/24h（約 833 mEq）</li>
+      </ol>
+    </section>
+
+    <!-- ── 4. Checklist ── -->
+    <section class="card hidden" id="checklist-section">
+      <h2 class="card__title">
+        <span class="card__step">4</span>
+        監測 Checklist
+      </h2>
+
+      <div class="checklist">
+        <div class="checklist__group">
+          <h3 class="checklist__heading">使用前確認</h3>
+          <label class="checklist__item"><input type="checkbox"> 確認為純代謝性酸中毒（PaCO₂ 正常或偏低）</label>
+          <label class="checklist__item"><input type="checkbox"> 排除 DKA（治療酮症優先；pH &lt; 6.9 才考慮 NaHCO₃）</label>
+          <label class="checklist__item"><input type="checkbox"> 排除乳酸性酸中毒主因未處理（NaHCO₃ 不改善乳酸清除）</label>
+          <label class="checklist__item"><input type="checkbox"> 排除外源性酸中毒（metformin 過量 / 水楊酸 / 甲醇）</label>
+          <label class="checklist__item"><input type="checkbox"> 基礎電解質：Na⁺、K⁺、游離 Ca²⁺</label>
+          <label class="checklist__item js-aki-item hidden"><input type="checkbox"> AKI 分期確認（KDIGO stage 2–3 = KRT 獲益最強族群）</label>
+          <label class="checklist__item js-vp-item hidden"><input type="checkbox"> 升壓劑種類與目前劑量（對應 SODa-BIC 納入條件）</label>
+        </div>
+        <div class="checklist__group">
+          <h3 class="checklist__heading">使用中監測</h3>
+          <label class="checklist__item"><input type="checkbox"> ABG 1–4h 後複查（pH 目標 ≥ 7.30；不得 > 7.45）</label>
+          <label class="checklist__item"><input type="checkbox"> 血清 Na⁺（警戒 > 145 mmol/L）</label>
+          <label class="checklist__item"><input type="checkbox"> 游離 Ca²⁺（鹼化降低 Ca²⁺；警戒 &lt; 0.9 mmol/L；症狀：肌肉抽搐、心律不整）</label>
+          <label class="checklist__item"><input type="checkbox"> 機械通氣患者：CO₂ 產生增加 → 必要時調整 RR / TV</label>
+        </div>
+        <div class="checklist__group">
+          <h3 class="checklist__heading">使用後評估</h3>
+          <label class="checklist__item"><input type="checkbox"> KRT 是否因此得以延遲 / 避免</label>
+          <label class="checklist__item"><input type="checkbox"> 記錄累積輸注量與 pH 曲線</label>
+          <label class="checklist__item"><input type="checkbox"> 不良效應記錄：鹼中毒 / 高血鈉 / 低血鈣</label>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 實證摘要 ── -->
+    <section class="card card--evidence">
+      <h2 class="card__title">實證摘要（2026 年 6 月）</h2>
+      <div class="evidence-wrap">
+        <table class="evidence-table">
+          <thead>
+            <tr>
+              <th>試驗</th>
+              <th>設計</th>
+              <th>族群</th>
+              <th>主要結果</th>
+              <th>KRT</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="ev--green">
+              <td><strong>BICAR-ICU</strong><br><em>Lancet 2018</em></td>
+              <td>RCT 開放<br>N=389</td>
+              <td>pH≤7.20，整體 ICU</td>
+              <td>複合終點 NS；AKI 分層 Day-28 死亡率↓（HR 0.59，P=.013）</td>
+              <td class="ev__krt ev__krt--good">52%→35%↓<br>AKI：73%→51%↓</td>
+            </tr>
+            <tr class="ev--green">
+              <td><strong>BICARICU-2</strong><br><em>JAMA 2025</em></td>
+              <td>RCT 開放<br>N=627</td>
+              <td>pH≤7.20 + KDIGO AKI 2–3</td>
+              <td>90d 死亡率 NS（P=.91）</td>
+              <td class="ev__krt ev__krt--good">50%→35%↓<br>NNT≈6.5</td>
+            </tr>
+            <tr class="ev--amber">
+              <td><strong>SODa-BIC</strong><br><em>NEJM 2026</em></td>
+              <td>RCT <strong>雙盲</strong><br>N=500</td>
+              <td>pH&lt;7.30 + 升壓劑</td>
+              <td>MAKE30 NS（P=.78）</td>
+              <td class="ev__krt">20.9%→16.8%<br>趨勢↓ NS</td>
+            </tr>
+            <tr class="ev--red">
+              <td><strong>BIHCA</strong><br><em>JAMA 2026</em></td>
+              <td>RCT <strong>雙盲</strong><br>N=779</td>
+              <td>院內心跳停止（IHCA）</td>
+              <td>ROSC NS（RR 1.05，P=.62）</td>
+              <td class="ev__krt">—</td>
+            </tr>
+            <tr>
+              <td><strong>Chen et al</strong><br><em>CCM 2026</em></td>
+              <td>Meta-analysis<br>N=1111</td>
+              <td>4 RCTs（截止 2025/10）</td>
+              <td>死亡率 RR 0.84（NS）；Bayesian P=90.4%</td>
+              <td class="ev__krt ev__krt--good">RR 0.69<br>TSA firm ✓</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="evidence-disclaimer">
+        本工具僅供醫療專業人員參考，不替代臨床判斷。所有劑量建議須依實際 ABG 與電解質結果調整。
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>NaHCO₃ Calculator · 基於 BICAR-ICU (Lancet 2018) / BICARICU-2 (JAMA 2025) / SODa-BIC (NEJM 2026) / BIHCA (JAMA 2026) / Chen et al (CCM 2026)</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
