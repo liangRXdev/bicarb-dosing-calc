@@ -9,22 +9,22 @@ const MEQ_PER_VIAL   = MEQ_PER_ML * VIAL_ML;          // 16.667 mEq/vial
 const NA_WARN_MEQ    = 100;       // warn if single dose > 100 mEq Na+
 
 // ── State ──
-let currentVd = 0.3;
+let currentVd = 0.5;
 let currentScenario = null;
 
 // ── DOM refs ──
-const btnAcute     = document.getElementById('btn-acute');
-const btnChronic   = document.getElementById('btn-chronic');
+const btnStandard  = document.getElementById('btn-standard');
+const btnSevere    = document.getElementById('btn-severe');
 const calcBtn      = document.getElementById('calc-btn');
 const resultSec    = document.getElementById('result-section');
 const checklistSec = document.getElementById('checklist-section');
 
 // ── Vd Toggle ──
-[btnAcute, btnChronic].forEach(btn => {
+[btnStandard, btnSevere].forEach(btn => {
   btn.addEventListener('click', () => {
     currentVd = parseFloat(btn.dataset.vd);
-    btnAcute.classList.toggle('vd-btn--active',  currentVd === 0.3);
-    btnChronic.classList.toggle('vd-btn--active', currentVd === 0.5);
+    btnStandard.classList.toggle('vd-btn--active', currentVd === 0.5);
+    btnSevere.classList.toggle('vd-btn--active',   currentVd === 0.7);
   });
 });
 

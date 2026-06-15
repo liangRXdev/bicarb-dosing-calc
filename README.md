@@ -40,7 +40,8 @@
 所需 NaHCO₃ (mEq) = Vd × 體重(kg) × (目標 HCO₃⁻ − 實測 HCO₃⁻)
 ```
 
-- **Vd 係數**：急性酸中毒 0.3；慢性 HCO₃⁻ 長期偏低（CKD / 慢性腸液流失）0.5
+- **Vd 係數（HCO₃⁻ 分布體積）**：標準 **0.5**；重度酸中毒（pH < 7.10 或 HCO₃⁻ < 10）bicarbonate space 增大至 0.6–0.8（Garella 1973），保守取 0.7
+  - 註：此公式輸入為 (目標 − 實測 HCO₃⁻)，係數即 HCO₃⁻ 分布體積。**勿與 base-deficit 法混用**：`NaHCO₃ = 0.3 × kg × base deficit` 的 0.3 是搭配 BE，與本式 0.5 不可互換
 - **目標 HCO₃⁻**：建議 ≤ 18 mEq/L，勿正常化至 24（試驗目標為 pH ≥ 7.30）
 - **分次給藥**：先給 ½，1–4h 後複查 ABG 再決定餘量
 - **每日上限**：≤ 500 mEq/24h（BICAR-ICU / BICARICU-2 方案：4.2% NaHCO₃ 1000 mL/24h）

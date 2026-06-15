@@ -81,12 +81,12 @@
       </h2>
 
       <div class="vd-toggle">
-        <span class="vd-toggle__label">分布容積（Vd）</span>
+        <span class="vd-toggle__label">HCO₃⁻ 分布體積（Vd）</span>
         <div class="vd-toggle__btns">
-          <button class="vd-btn vd-btn--active" data-vd="0.3" id="btn-acute">急性　Vd = 0.3</button>
-          <button class="vd-btn" data-vd="0.5" id="btn-chronic">慢性　Vd = 0.5</button>
+          <button class="vd-btn vd-btn--active" data-vd="0.5" id="btn-standard">標準　Vd = 0.5</button>
+          <button class="vd-btn" data-vd="0.7" id="btn-severe">重度　Vd ≈ 0.7</button>
         </div>
-        <p class="vd-toggle__hint">急性酸中毒選 0.3；慢性 HCO₃⁻ 長期偏低（CKD / 慢性腸液流失）選 0.5</p>
+        <p class="vd-toggle__hint">標準代謝性酸中毒用 <strong>0.5</strong>（bicarbonate space）；重度（pH &lt; 7.10 或 HCO₃⁻ &lt; 10）分布體積增大至 0.6–0.8（Garella 1973），保守取 0.7。<br>注意：此公式輸入為 (目標 − 實測 HCO₃⁻)，係數即 HCO₃⁻ 分布體積；與 base-deficit 法（0.3 × kg × BE）不同，兩者係數不可互換。</p>
       </div>
 
       <div class="input-row input-row--4">
