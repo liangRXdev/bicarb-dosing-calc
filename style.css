@@ -182,6 +182,7 @@ body {
 .vd-toggle__label { display: block; font-size: .85rem; font-weight: 600; color: var(--color-text); margin-bottom: .5rem; }
 .vd-toggle__btns { display: flex; gap: .5rem; flex-wrap: wrap; }
 .vd-toggle__hint { font-size: .78rem; color: var(--color-text-muted); margin-top: .4rem; }
+.vd-toggle__hint--warn { padding: .5rem .7rem; background: var(--color-amber-bg); border-left: 3px solid var(--color-amber); color: var(--color-amber); }
 
 .vd-btn {
   padding: .45rem 1.1rem;

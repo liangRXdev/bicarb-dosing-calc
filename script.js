@@ -60,7 +60,7 @@ function getPhSeverity(pH) {
   if (pH < 7.30) return {
     level:  'moderate',
     label:  '中度酸中毒（pH 7.20–7.30）',
-    detail: 'SODa-BIC（NEJM 2026）族群範圍；此 pH 僅在合併升壓劑時有 RCT 支持，且主要終點 NS',
+    detail: 'SODa-BIC（NEJM 2026，雙盲）族群範圍：合併升壓劑亦不改善 MAKE30、死亡或升壓劑天數 → 不建議常規使用',
     scenarioHint: { ok: ['B', 'D'], warn: 'A', warnMsg: 'pH > 7.20，超出場景 A（BICAR-ICU/BICARICU-2）納入標準，建議改選場景 B' }
   };
   return {
@@ -144,7 +144,8 @@ function calculate() {
   document.getElementById('formula-box').innerHTML =
     `所需 NaHCO₃ = <em>Vd</em> × <em>體重</em> × (<em>目標 HCO₃⁻</em> − <em>實測 HCO₃⁻</em>)<br>` +
     `= <em>${currentVd}</em> × <em>${weight} kg</em> × (<em>${targetHco3}</em> − <em>${actualHco3}</em>) mEq/L<br>` +
-    `= <em>${totalMeq.toFixed(1)} mEq</em>　→　先給 ½ = <em>${firstMeq.toFixed(1)} mEq</em>，1–4h 後複查 ABG 再給餘 ½`;
+    `= <em>${totalMeq.toFixed(1)} mEq</em>　→　先給 ½ = <em>${firstMeq.toFixed(1)} mEq</em>，複查 ABG 後再決定是否給餘 ½<br>` +
+    `<small>分布體積係數本身不確定（隨酸中毒嚴重度、輸注速度而異）：此數值僅為第一劑量級，請依 ABG 滴定</small>`;
 
   // Result tiles
   document.getElementById('r-total').textContent  = totalMeq.toFixed(1);
