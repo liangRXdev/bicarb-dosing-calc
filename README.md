@@ -1,98 +1,100 @@
 # bicarb-dosing-calc
 
-> Sodium Bicarbonate（NaHCO₃）代謝性酸中毒劑量計算器
-> 整合 2018–2026 重症 RCT 實證的臨床決策輔助工具
+**English** | [繁體中文](README.zh-TW.md)
 
-**線上版：** https://liangrxdev.github.io/bicarb-dosing-calc/
+> Sodium bicarbonate (NaHCO₃) dosing calculator for metabolic acidosis
+> A clinical decision-support tool integrating 2018–2026 critical-care RCT evidence
 
----
-
-## 用途
-
-協助臨床藥師與重症醫療團隊，於 ICU 代謝性酸中毒情境下：
-
-1. 依缺損公式計算 NaHCO₃ 補充量
-2. 對照當前 RCT 實證判斷使用時機（場景分層）
-3. 換算台灣常見 7% 安瓿支數
-4. 提供 Na⁺ 負荷警示與監測 checklist
-
-> ⚠️ **免責聲明**：本工具僅供**醫療專業人員**參考，不替代臨床判斷。所有劑量建議須依實際 ABG 與電解質結果調整。不含任何病患資料、不做診斷建議。
+**Online:** https://liangrxdev.github.io/bicarb-dosing-calc/ (interface in Traditional Chinese)
 
 ---
 
-## 功能
+## Purpose
 
-| 功能 | 說明 |
+Helps clinical pharmacists and critical-care teams, in ICU metabolic acidosis, to:
+
+1. Calculate the NaHCO₃ replacement amount with the deficit formula
+2. Judge timing of use against current RCT evidence (scenario stratification)
+3. Convert to the number of 7% ampoules commonly used in Taiwan
+4. Provide Na⁺ load warnings and a monitoring checklist
+
+> ⚠️ **Disclaimer**: This tool is for reference by **healthcare professionals** only and does not replace clinical judgment. All dose suggestions must be adjusted to actual ABG and electrolyte results. It contains no patient data and makes no diagnostic recommendations.
+
+---
+
+## Features
+
+| Feature | Description |
 |------|------|
-| **缺損公式計算** | `Vd × 體重 × (目標 HCO₃⁻ − 實測 HCO₃⁻)`；Vd 可切換 **0.5（標準）/ 0.7（重度）**；結果僅代表第一劑量級 |
-| **臨床場景分層** | 4 場景，各標示實證等級（最強證據 / 不建議常規〔升壓劑、IHCA 兩場景〕 / 僅計算） |
-| **pH 嚴重度分層** | 依輸入 pH 自動分級（< 7.10 / 7.10–7.20 / 7.20–7.30 / ≥ 7.30），對應 RCT 納入範圍並交叉核對所選場景 |
-| **台灣安瓿換算** | 7% NaHCO₃（70 mg/mL）20 mL/支 = **16.67 mEq/支**，自動計算支數與精確抽取量 |
-| **Na⁺ 負荷警示** | 單劑 > 100 mEq 時提示鈉負荷（換算 NaCl 當量） |
-| **監測 Checklist** | 使用前 / 中 / 後三階段；依場景動態顯示 AKI 分期、升壓劑項目 |
-| **實證摘要表** | 5 篇試驗結果一覽，顏色分層 |
+| **Deficit formula** | `Vd × weight × (target HCO₃⁻ − measured HCO₃⁻)`; Vd switchable between **0.5 (standard) / 0.7 (severe)**; the result only indicates the first-dose order of magnitude |
+| **Clinical scenario stratification** | 4 scenarios, each labelled with its evidence level (strongest evidence / not recommended routinely [vasopressor and IHCA scenarios] / calculation only) |
+| **pH severity stratification** | Automatically grades the entered pH (< 7.10 / 7.10–7.20 / 7.20–7.30 / ≥ 7.30), maps it to RCT inclusion ranges and cross-checks the selected scenario |
+| **Taiwan ampoule conversion** | 7% NaHCO₃ (70 mg/mL) 20 mL/ampoule = **16.67 mEq/ampoule**; automatically computes the number of ampoules and the exact volume to draw |
+| **Na⁺ load warning** | Flags sodium load when a single dose > 100 mEq (with NaCl equivalent) |
+| **Monitoring checklist** | Before / during / after; AKI stage and vasopressor items appear dynamically by scenario |
+| **Evidence summary table** | Results of 5 trials at a glance, color-tiered |
 
 ---
 
-## 計算公式
+## Formula
 
 ```
-所需 NaHCO₃ (mEq) = Vd × 體重(kg) × (目標 HCO₃⁻ − 實測 HCO₃⁻)
+Required NaHCO₃ (mEq) = Vd × weight (kg) × (target HCO₃⁻ − measured HCO₃⁻)
 ```
 
-- **Vd 係數（HCO₃⁻ 分布體積）**：標準 **0.5**；重度酸中毒（pH < 7.10 或 HCO₃⁻ < 10）bicarbonate space 增大至 0.6–0.8（Garella 1973），保守取 0.7
-  - 註：此公式輸入為 (目標 − 實測 HCO₃⁻)，係數即 HCO₃⁻ 分布體積。**勿與 base-deficit 法混用**：`NaHCO₃ = 0.3 × kg × base deficit` 的 0.3 是搭配 BE，與本式 0.5 不可互換
-  - **係數本身不確定**：base-deficit 法另有 **0.4**（Jung 2026, *Curr Opin Crit Care*；依 Fujii 2019，輸注 1h 後表觀 Vd ≈ 0.4 L/kg，隨病況與輸注速度變動）。公式只決定第一劑量級，其後依 ABG 滴定
-- **目標 HCO₃⁻**：建議 ≤ 18 mEq/L，勿正常化至 24（試驗目標為 pH ≥ 7.30）
-- **分次給藥**：先給 ½，複查 ABG（不穩定或濃縮輸注者 30–60 分鐘；其餘 1–4h）再決定餘量
-- **每日上限**：≤ 500 mEq/24h（BICAR-ICU / BICARICU-2 方案：4.2% NaHCO₃ 1000 mL/24h）
+- **Vd coefficient (HCO₃⁻ volume of distribution)**: standard **0.5**; in severe acidosis (pH < 7.10 or HCO₃⁻ < 10) the bicarbonate space grows to 0.6–0.8 (Garella 1973), conservatively taken as 0.7
+  - Note: this formula's input is (target − measured HCO₃⁻), so the coefficient is the HCO₃⁻ volume of distribution. **Do not mix with the base-deficit method**: the 0.3 in `NaHCO₃ = 0.3 × kg × base deficit` pairs with BE and is not interchangeable with this formula's 0.5
+  - **The coefficient itself is uncertain**: the base-deficit method also uses **0.4** (Jung 2026, *Curr Opin Crit Care*; per Fujii 2019, apparent Vd ≈ 0.4 L/kg 1 h after infusion, varying with condition and infusion rate). The formula only sets the first-dose magnitude; titrate by ABG thereafter
+- **Target HCO₃⁻**: ≤ 18 mEq/L recommended; do not normalize to 24 (trial target was pH ≥ 7.30)
+- **Divided dosing**: give ½ first, recheck ABG (30–60 min if unstable or on concentrated infusion; otherwise 1–4 h) before deciding the rest
+- **Daily maximum**: ≤ 500 mEq/24h (BICAR-ICU / BICARICU-2 protocol: 4.2% NaHCO₃ 1000 mL/24h)
 
-### 台灣產品規格
+### Taiwan product specifications
 
-| 項目 | 數值 |
+| Item | Value |
 |------|------|
-| 濃度 | 7% NaHCO₃ = 70 mg/mL = 0.833 mEq/mL |
-| 包裝 | 20 mL / 安瓿 |
-| 每支含量 | **16.67 mEq** |
-| 稀釋為 4.2%（protocol 濃度） | 7% 3 份 + 注射用水 2 份 |
+| Concentration | 7% NaHCO₃ = 70 mg/mL = 0.833 mEq/mL |
+| Package | 20 mL / ampoule |
+| Content per ampoule | **16.67 mEq** |
+| Dilution to 4.2% (protocol concentration) | 3 parts 7% + 2 parts water for injection |
 
 ---
 
-## 實證基礎
+## Evidence Base
 
-| 試驗 | 設計 | 族群 | 主要結果 | KRT/RRT |
+| Trial | Design | Population | Main results | KRT/RRT |
 |------|------|------|---------|---------|
-| **BICAR-ICU**（Lancet 2018） | RCT 開放, N=389 | pH≤7.20 整體 ICU | 複合終點 NS；AKI 分層 Day-28 死亡率↓（HR 0.59, P=.013） | 52%→35%↓ |
-| **BICARICU-2**（JAMA 2025） | RCT 開放, N=627 | pH≤7.20 + KDIGO AKI 2–3 | 90d 死亡率 NS（P=.91） | 50%→35%↓, NNT≈6.5 |
-| **SODa-BIC**（NEJM 2026） | RCT 雙盲, N=498（mITT） | pH<7.30 + 升壓劑 | MAKE30 NS（+1.2 pp, −7.1 to 9.4, P=.78）；低血鉀 1.6% vs 0 → **不建議常規使用** | 20.9%→16.8%（−3.9 pp，CI 跨 0） |
-| **BIHCA**（JAMA 2026） | RCT 雙盲, N=779 | 院內心跳停止 | ROSC NS（RR 1.05, P=.62） | — |
-| **Chen et al**（CCM 2026） | Meta, N=1111 | 4 RCTs（截止 2025/10） | 死亡率 RR 0.84（NS）；Bayesian 90.4% | RR 0.69, TSA firm |
+| **BICAR-ICU** (Lancet 2018) | Open-label RCT, N=389 | pH≤7.20, general ICU | Composite endpoint NS; AKI stratum Day-28 mortality ↓ (HR 0.59, P=.013) | 52%→35% ↓ |
+| **BICARICU-2** (JAMA 2025) | Open-label RCT, N=627 | pH≤7.20 + KDIGO AKI 2–3 | 90-day mortality NS (P=.91) | 50%→35% ↓, NNT≈6.5 |
+| **SODa-BIC** (NEJM 2026) | Double-blind RCT, N=498 (mITT) | pH<7.30 + vasopressors | MAKE30 NS (+1.2 pp, −7.1 to 9.4, P=.78); hypokalemia 1.6% vs 0 → **not recommended routinely** | 20.9%→16.8% (−3.9 pp, CI crosses 0) |
+| **BIHCA** (JAMA 2026) | Double-blind RCT, N=779 | In-hospital cardiac arrest | ROSC NS (RR 1.05, P=.62) | — |
+| **Chen et al** (CCM 2026) | Meta-analysis, N=1111 | 4 RCTs (through 2025/10) | Mortality RR 0.84 (NS); Bayesian 90.4% | RR 0.69, TSA firm |
 
-**臨床要點：**
-- pH ≤ 7.20 + 中重度 AKI（KDIGO 2–3）→ 減少腎臟替代治療（KRT/RRT）證據最強
-- 院內心跳停止（IHCA）→ 雙盲 RCT 證實 ROSC 無差異，**不建議常規使用**
-- 死亡率：各試驗趨勢有利但均未達顯著
-
----
-
-## 技術
-
-- 純前端：HTML / CSS / JavaScript（無框架、無相依套件、無建置流程）
-- 字型：Noto Sans TC + DM Mono
-- CSS：BEM 命名
-- 部署：GitHub Pages（main 分支根目錄）
-
-### 本機執行
-
-直接以瀏覽器開啟 `index.html` 即可，無需伺服器。
+**Clinical takeaways:**
+- pH ≤ 7.20 + moderate-to-severe AKI (KDIGO 2–3) → strongest evidence for reducing kidney replacement therapy (KRT/RRT)
+- In-hospital cardiac arrest (IHCA) → a double-blind RCT showed no difference in ROSC; **not recommended routinely**
+- Mortality: trends favorable across trials but none reached significance
 
 ---
 
-## 授權與資料保護
+## Tech
 
-- 不蒐集、不傳輸任何使用者輸入；所有計算於瀏覽器本機完成
-- 臨床數據引用自公開發表之 RCT 與 meta-analysis，來源年份與機構均標示於工具內
+- Pure frontend: HTML / CSS / JavaScript (no framework, no dependencies, no build step)
+- Fonts: Noto Sans TC + DM Mono
+- CSS: BEM naming
+- Deployment: GitHub Pages (root of the main branch)
+
+### Run locally
+
+Just open `index.html` in a browser; no server needed.
 
 ---
 
-*最後更新：2026-06-15*
+## License and Data Protection
+
+- No user input is collected or transmitted; all calculation happens locally in the browser
+- Clinical data are cited from published RCTs and meta-analyses; source years and institutions are shown in the tool
+
+---
+
+*Last updated: 2026-06-15*
