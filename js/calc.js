@@ -16,6 +16,7 @@
   const NA_WARN_MEQ    = 100;       // warn if single dose > 100 mEq Na+
   const NACL_MG_PER_MEQ = 58.44;
   const TARGET_CONFIRM_ABOVE = 22;  // confirm() if target HCO3- exceeds this
+  const HCO3_MAX_PLAUSIBLE   = 60;  // mEq/L; above this treat as entry error
 
   // ── pH Severity ──
   function getPhSeverity(pH) {
@@ -58,8 +59,14 @@
     if (isNaN(weight) || isNaN(actualHco3) || isNaN(targetHco3)) {
       return { status: 'error', message: '請輸入體重、實測 HCO₃⁻ 及目標 HCO₃⁻' };
     }
+    if (!Number.isFinite(weight) || !Number.isFinite(actualHco3) || !Number.isFinite(targetHco3)) {
+      return { status: 'error', message: '數值無效，請重新輸入' };
+    }
     if (weight <= 0 || actualHco3 <= 0) {
       return { status: 'error', message: '數值須大於 0' };
+    }
+    if (actualHco3 > HCO3_MAX_PLAUSIBLE || targetHco3 > HCO3_MAX_PLAUSIBLE) {
+      return { status: 'error', message: `HCO₃⁻ 超出生理範圍（> ${HCO3_MAX_PLAUSIBLE} mEq/L），請確認輸入` };
     }
     if (targetHco3 <= actualHco3) {
       return { status: 'error', message: '目標 HCO₃⁻ 須大於實測值' };
@@ -112,7 +119,7 @@
 
   return {
     VIAL_MG_PER_ML, VIAL_ML, NAHCO3_MW, MEQ_PER_ML, MEQ_PER_VIAL, NA_WARN_MEQ,
-    TARGET_CONFIRM_ABOVE,
+    TARGET_CONFIRM_ABOVE, HCO3_MAX_PLAUSIBLE,
     getPhSeverity, getPhMismatch, validateInputs, computeDose, vialPlan, naLoadWarning,
   };
 });
