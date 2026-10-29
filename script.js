@@ -19,6 +19,7 @@ const checklistSec = document.getElementById('checklist-section');
     currentVd = parseFloat(btn.dataset.vd);
     btnStandard.classList.toggle('vd-btn--active', currentVd === 0.5);
     btnSevere.classList.toggle('vd-btn--active',   currentVd === 0.7);
+    invalidateResults();
   });
 });
 
@@ -27,8 +28,20 @@ document.querySelectorAll('input[name="scenario"]').forEach(radio => {
   radio.addEventListener('change', () => {
     currentScenario = radio.value;
     updateScenarioUI();
+    invalidateResults();
   });
 });
+
+// ── Stale-result guard ──
+// A displayed dose must always correspond to the inputs on screen: hide it
+// as soon as anything it depends on changes or a recalculation is rejected.
+['ph', 'weight', 'actual-hco3', 'target-hco3'].forEach(id =>
+  document.getElementById(id).addEventListener('input', invalidateResults));
+
+function invalidateResults() {
+  resultSec.classList.add('hidden');
+  checklistSec.classList.add('hidden');
+}
 
 function updateScenarioUI() {
   document.querySelectorAll('.js-aki-item').forEach(el =>
@@ -82,10 +95,14 @@ function calculate() {
   // Validation
   const v = Calc.validateInputs({ weight, actualHco3, targetHco3 });
   if (v.status === 'error') {
+    invalidateResults();
     alert(v.message);
     return;
   }
-  if (v.status === 'confirm' && !confirm(v.message)) return;
+  if (v.status === 'confirm' && !confirm(v.message)) {
+    invalidateResults();
+    return;
+  }
 
   const { totalMeq, firstMeq, secondMeq } =
     Calc.computeDose({ vd: currentVd, weight, actualHco3, targetHco3 });
