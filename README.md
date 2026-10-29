@@ -88,6 +88,16 @@ Required NaHCO₃ (mEq) = Vd × weight (kg) × (target HCO₃⁻ − measured HC
 
 Just open `index.html` in a browser; no server needed.
 
+### Tests
+
+```bash
+npm test   # = node --test "test/**/*.test.js" (Node ≥ 18, no dependencies)
+```
+
+- `js/calc.js`: pure calculation core (browser global `BicarbCalc` / Node `require`)
+- `script.js`: DOM wiring only
+- `test/fixtures/golden.json`: characterization snapshot of the rendered output
+
 ---
 
 ## License and Data Protection

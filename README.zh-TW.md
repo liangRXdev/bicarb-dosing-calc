@@ -88,6 +88,16 @@
 
 直接以瀏覽器開啟 `index.html` 即可，無需伺服器。
 
+### 測試
+
+```bash
+npm test   # = node --test "test/**/*.test.js"（Node ≥ 18，無相依套件）
+```
+
+- `js/calc.js`：純計算核心（瀏覽器全域 `BicarbCalc`／Node `require`）
+- `script.js`：僅 DOM 操作
+- `test/fixtures/golden.json`：渲染輸出的 characterization 快照
+
 ---
 
 ## 授權與資料保護

@@ -1,0 +1,1042 @@
+[
+ {
+  "input": {
+   "weight": 60,
+   "actual": 10,
+   "target": 18,
+   "vd": 0.5,
+   "scenario": null,
+   "pH": ""
+  },
+  "output": {
+   "text": {
+    "r-total": "240.0",
+    "r-first": "120.0",
+    "r-second": "120.0",
+    "v-first-count": "8 支",
+    "v-first-detail": "7 支全量 + 1 支取 4.0 mL（共 144.0 mL）",
+    "v-second-count": "8 支",
+    "v-second-detail": "7 支全量 + 1 支取 4.0 mL（共 144.0 mL）",
+    "v-total-count": "15 支",
+    "v-total-detail": "14 支全量 + 1 支取 8.0 mL（共 288.0 mL）",
+    "na-alert-text": "第一劑鈉負荷約 120 mEq Na⁺（≈ 7.0 g NaCl）。基礎血鈉偏高者（Na⁺ > 140 mmol/L）需密切監測；建議慢速輸注並分次給予。",
+    "ph-display": "",
+    "ph-badge": "",
+    "ph-detail": "",
+    "ph-mismatch-text": ""
+   },
+   "html": "所需 NaHCO₃ = <em>Vd</em> × <em>體重</em> × (<em>目標 HCO₃⁻</em> − <em>實測 HCO₃⁻</em>)<br>= <em>0.5</em> × <em>60 kg</em> × (<em>18</em> − <em>10</em>) mEq/L<br>= <em>240.0 mEq</em>　→　先給 ½ = <em>120.0 mEq</em>，複查 ABG 後再決定是否給餘 ½<br><small>分布體積係數本身不確定（隨酸中毒嚴重度、輸注速度而異）：此數值僅為第一劑量級，請依 ABG 滴定</small>",
+   "visible": {
+    "result-section": true,
+    "checklist-section": true,
+    "ihca-alert": false,
+    "ph-severity": false,
+    "ph-mismatch-alert": false,
+    "na-alert": true
+   },
+   "phLevel": null,
+   "alerts": [],
+   "confirms": []
+  }
+ },
+ {
+  "input": {
+   "weight": 60,
+   "actual": 10,
+   "target": 18,
+   "vd": 0.7,
+   "scenario": "A",
+   "pH": 6.95
+  },
+  "output": {
+   "text": {
+    "r-total": "336.0",
+    "r-first": "168.0",
+    "r-second": "168.0",
+    "v-first-count": "11 支",
+    "v-first-detail": "10 支全量 + 1 支取 1.6 mL（共 201.6 mL）",
+    "v-second-count": "11 支",
+    "v-second-detail": "10 支全量 + 1 支取 1.6 mL（共 201.6 mL）",
+    "v-total-count": "21 支",
+    "v-total-detail": "20 支全量 + 1 支取 3.2 mL（共 403.2 mL）",
+    "na-alert-text": "第一劑鈉負荷約 168 mEq Na⁺（≈ 9.8 g NaCl）。基礎血鈉偏高者（Na⁺ > 140 mmol/L）需密切監測；建議慢速輸注並分次給予。",
+    "ph-display": "6.95",
+    "ph-badge": "重度酸中毒（pH < 7.10）",
+    "ph-detail": "BICARICU-2 分層：此組 AKI 更嚴重，KRT 獲益可能更顯著；BICAR-ICU 納入範圍內",
+    "ph-mismatch-text": ""
+   },
+   "html": "所需 NaHCO₃ = <em>Vd</em> × <em>體重</em> × (<em>目標 HCO₃⁻</em> − <em>實測 HCO₃⁻</em>)<br>= <em>0.7</em> × <em>60 kg</em> × (<em>18</em> − <em>10</em>) mEq/L<br>= <em>336.0 mEq</em>　→　先給 ½ = <em>168.0 mEq</em>，複查 ABG 後再決定是否給餘 ½<br><small>分布體積係數本身不確定（隨酸中毒嚴重度、輸注速度而異）：此數值僅為第一劑量級，請依 ABG 滴定</small>",
+   "visible": {
+    "result-section": true,
+    "checklist-section": true,
+    "ihca-alert": false,
+    "ph-severity": true,
+    "ph-mismatch-alert": false,
+    "na-alert": true
+   },
+   "phLevel": "critical",
+   "alerts": [],
+   "confirms": []
+  }
+ },
+ {
+  "input": {
+   "weight": 70,
+   "actual": 5,
+   "target": 18,
+   "vd": 0.5,
+   "scenario": "B",
+   "pH": 7.1
+  },
+  "output": {
+   "text": {
+    "r-total": "455.0",
+    "r-first": "227.5",
+    "r-second": "227.5",
+    "v-first-count": "14 支",
+    "v-first-detail": "13 支全量 + 1 支取 13.0 mL（共 273.0 mL）",
+    "v-second-count": "14 支",
+    "v-second-detail": "13 支全量 + 1 支取 13.0 mL（共 273.0 mL）",
+    "v-total-count": "28 支",
+    "v-total-detail": "27 支全量 + 1 支取 6.0 mL（共 546.0 mL）",
+    "na-alert-text": "第一劑鈉負荷約 228 mEq Na⁺（≈ 13.3 g NaCl）。基礎血鈉偏高者（Na⁺ > 140 mmol/L）需密切監測；建議慢速輸注並分次給予。",
+    "ph-display": "7.10",
+    "ph-badge": "中重度酸中毒（pH 7.10–7.20）",
+    "ph-detail": "符合 BICAR-ICU 及 BICARICU-2 納入標準（pH ≤ 7.20）；合併 AKI stage 2–3 者 KRT 獲益最強",
+    "ph-mismatch-text": ""
+   },
+   "html": "所需 NaHCO₃ = <em>Vd</em> × <em>體重</em> × (<em>目標 HCO₃⁻</em> − <em>實測 HCO₃⁻</em>)<br>= <em>0.5</em> × <em>70 kg</em> × (<em>18</em> − <em>5</em>) mEq/L<br>= <em>455.0 mEq</em>　→　先給 ½ = <em>227.5 mEq</em>，複查 ABG 後再決定是否給餘 ½<br><small>分布體積係數本身不確定（隨酸中毒嚴重度、輸注速度而異）：此數值僅為第一劑量級，請依 ABG 滴定</small>",
+   "visible": {
+    "result-section": true,
+    "checklist-section": true,
+    "ihca-alert": false,
+    "ph-severity": true,
+    "ph-mismatch-alert": false,
+    "na-alert": true
+   },
+   "phLevel": "severe",
+   "alerts": [],
+   "confirms": []
+  }
+ },
+ {
+  "input": {
+   "weight": 70,
+   "actual": 5,
+   "target": 18,
+   "vd": 0.7,
+   "scenario": "C",
+   "pH": 7.15
+  },
+  "output": {
+   "text": {
+    "r-total": "637.0",
+    "r-first": "318.5",
+    "r-second": "318.5",
+    "v-first-count": "20 支",
+    "v-first-detail": "19 支全量 + 1 支取 2.2 mL（共 382.2 mL）",
+    "v-second-count": "20 支",
+    "v-second-detail": "19 支全量 + 1 支取 2.2 mL（共 382.2 mL）",
+    "v-total-count": "39 支",
+    "v-total-detail": "38 支全量 + 1 支取 4.4 mL（共 764.4 mL）",
+    "na-alert-text": "第一劑鈉負荷約 319 mEq Na⁺（≈ 18.6 g NaCl）。基礎血鈉偏高者（Na⁺ > 140 mmol/L）需密切監測；建議慢速輸注並分次給予。",
+    "ph-display": "7.15",
+    "ph-badge": "中重度酸中毒（pH 7.10–7.20）",
+    "ph-detail": "符合 BICAR-ICU 及 BICARICU-2 納入標準（pH ≤ 7.20）；合併 AKI stage 2–3 者 KRT 獲益最強",
+    "ph-mismatch-text": ""
+   },
+   "html": "所需 NaHCO₃ = <em>Vd</em> × <em>體重</em> × (<em>目標 HCO₃⁻</em> − <em>實測 HCO₃⁻</em>)<br>= <em>0.7</em> × <em>70 kg</em> × (<em>18</em> − <em>5</em>) mEq/L<br>= <em>637.0 mEq</em>　→　先給 ½ = <em>318.5 mEq</em>，複查 ABG 後再決定是否給餘 ½<br><small>分布體積係數本身不確定（隨酸中毒嚴重度、輸注速度而異）：此數值僅為第一劑量級，請依 ABG 滴定</small>",
+   "visible": {
+    "result-section": true,
+    "checklist-section": true,
+    "ihca-alert": true,
+    "ph-severity": true,
+    "ph-mismatch-alert": false,
+    "na-alert": true
+   },
+   "phLevel": "severe",
+   "alerts": [],
+   "confirms": []
+  }
+ },
+ {
+  "input": {
+   "weight": 50,
+   "actual": 12,
+   "target": 18,
+   "vd": 0.5,
+   "scenario": "D",
+   "pH": 7.2
+  },
+  "output": {
+   "text": {
+    "r-total": "150.0",
+    "r-first": "75.0",
+    "r-second": "75.0",
+    "v-first-count": "5 支",
+    "v-first-detail": "4 支全量 + 1 支取 10.0 mL（共 90.0 mL）",
+    "v-second-count": "5 支",
+    "v-second-detail": "4 支全量 + 1 支取 10.0 mL（共 90.0 mL）",
+    "v-total-count": "9 支",
+    "v-total-detail": "共 180.0 mL",
+    "na-alert-text": "",
+    "ph-display": "7.20",
+    "ph-badge": "中重度酸中毒（pH 7.10–7.20）",
+    "ph-detail": "符合 BICAR-ICU 及 BICARICU-2 納入標準（pH ≤ 7.20）；合併 AKI stage 2–3 者 KRT 獲益最強",
+    "ph-mismatch-text": ""
+   },
+   "html": "所需 NaHCO₃ = <em>Vd</em> × <em>體重</em> × (<em>目標 HCO₃⁻</em> − <em>實測 HCO₃⁻</em>)<br>= <em>0.5</em> × <em>50 kg</em> × (<em>18</em> − <em>12</em>) mEq/L<br>= <em>150.0 mEq</em>　→　先給 ½ = <em>75.0 mEq</em>，複查 ABG 後再決定是否給餘 ½<br><small>分布體積係數本身不確定（隨酸中毒嚴重度、輸注速度而異）：此數值僅為第一劑量級，請依 ABG 滴定</small>",
+   "visible": {
+    "result-section": true,
+    "checklist-section": true,
+    "ihca-alert": false,
+    "ph-severity": true,
+    "ph-mismatch-alert": false,
+    "na-alert": false
+   },
+   "phLevel": "severe",
+   "alerts": [],
+   "confirms": []
+  }
+ },
+ {
+  "input": {
+   "weight": 50,
+   "actual": 12,
+   "target": 18,
+   "vd": 0.7,
+   "scenario": null,
+   "pH": 7.25
+  },
+  "output": {
+   "text": {
+    "r-total": "210.0",
+    "r-first": "105.0",
+    "r-second": "105.0",
+    "v-first-count": "7 支",
+    "v-first-detail": "6 支全量 + 1 支取 6.0 mL（共 126.0 mL）",
+    "v-second-count": "7 支",
+    "v-second-detail": "6 支全量 + 1 支取 6.0 mL（共 126.0 mL）",
+    "v-total-count": "13 支",
+    "v-total-detail": "12 支全量 + 1 支取 12.0 mL（共 252.0 mL）",
+    "na-alert-text": "第一劑鈉負荷約 105 mEq Na⁺（≈ 6.1 g NaCl）。基礎血鈉偏高者（Na⁺ > 140 mmol/L）需密切監測；建議慢速輸注並分次給予。",
+    "ph-display": "7.25",
+    "ph-badge": "中度酸中毒（pH 7.20–7.30）",
+    "ph-detail": "SODa-BIC（NEJM 2026，雙盲）族群範圍：合併升壓劑亦不改善 MAKE30、死亡或升壓劑天數 → 不建議常規使用",
+    "ph-mismatch-text": ""
+   },
+   "html": "所需 NaHCO₃ = <em>Vd</em> × <em>體重</em> × (<em>目標 HCO₃⁻</em> − <em>實測 HCO₃⁻</em>)<br>= <em>0.7</em> × <em>50 kg</em> × (<em>18</em> − <em>12</em>) mEq/L<br>= <em>210.0 mEq</em>　→　先給 ½ = <em>105.0 mEq</em>，複查 ABG 後再決定是否給餘 ½<br><small>分布體積係數本身不確定（隨酸中毒嚴重度、輸注速度而異）：此數值僅為第一劑量級，請依 ABG 滴定</small>",
+   "visible": {
+    "result-section": true,
+    "checklist-section": true,
+    "ihca-alert": false,
+    "ph-severity": true,
+    "ph-mismatch-alert": false,
+    "na-alert": true
+   },
+   "phLevel": "moderate",
+   "alerts": [],
+   "confirms": []
+  }
+ },
+ {
+  "input": {
+   "weight": 80,
+   "actual": 8,
+   "target": 20,
+   "vd": 0.5,
+   "scenario": "A",
+   "pH": 7.3
+  },
+  "output": {
+   "text": {
+    "r-total": "480.0",
+    "r-first": "240.0",
+    "r-second": "240.0",
+    "v-first-count": "15 支",
+    "v-first-detail": "14 支全量 + 1 支取 8.0 mL（共 288.0 mL）",
+    "v-second-count": "15 支",
+    "v-second-detail": "14 支全量 + 1 支取 8.0 mL（共 288.0 mL）",
+    "v-total-count": "29 支",
+    "v-total-detail": "28 支全量 + 1 支取 16.0 mL（共 576.0 mL）",
+    "na-alert-text": "第一劑鈉負荷約 240 mEq Na⁺（≈ 14.0 g NaCl）。基礎血鈉偏高者（Na⁺ > 140 mmol/L）需密切監測；建議慢速輸注並分次給予。",
+    "ph-display": "7.30",
+    "ph-badge": "pH ≥ 7.30（超出 RCT 納入範圍）",
+    "ph-detail": "目前無 RCT 支持在此 pH 常規使用 NaHCO₃；若仍計算，建議審慎評估臨床適應症",
+    "ph-mismatch-text": ""
+   },
+   "html": "所需 NaHCO₃ = <em>Vd</em> × <em>體重</em> × (<em>目標 HCO₃⁻</em> − <em>實測 HCO₃⁻</em>)<br>= <em>0.5</em> × <em>80 kg</em> × (<em>20</em> − <em>8</em>) mEq/L<br>= <em>480.0 mEq</em>　→　先給 ½ = <em>240.0 mEq</em>，複查 ABG 後再決定是否給餘 ½<br><small>分布體積係數本身不確定（隨酸中毒嚴重度、輸注速度而異）：此數值僅為第一劑量級，請依 ABG 滴定</small>",
+   "visible": {
+    "result-section": true,
+    "checklist-section": true,
+    "ihca-alert": false,
+    "ph-severity": true,
+    "ph-mismatch-alert": false,
+    "na-alert": true
+   },
+   "phLevel": "mild",
+   "alerts": [],
+   "confirms": []
+  }
+ },
+ {
+  "input": {
+   "weight": 80,
+   "actual": 8,
+   "target": 20,
+   "vd": 0.7,
+   "scenario": "B",
+   "pH": 7.4
+  },
+  "output": {
+   "text": {
+    "r-total": "672.0",
+    "r-first": "336.0",
+    "r-second": "336.0",
+    "v-first-count": "21 支",
+    "v-first-detail": "20 支全量 + 1 支取 3.2 mL（共 403.2 mL）",
+    "v-second-count": "21 支",
+    "v-second-detail": "20 支全量 + 1 支取 3.2 mL（共 403.2 mL）",
+    "v-total-count": "41 支",
+    "v-total-detail": "40 支全量 + 1 支取 6.4 mL（共 806.4 mL）",
+    "na-alert-text": "第一劑鈉負荷約 336 mEq Na⁺（≈ 19.6 g NaCl）。基礎血鈉偏高者（Na⁺ > 140 mmol/L）需密切監測；建議慢速輸注並分次給予。",
+    "ph-display": "7.40",
+    "ph-badge": "pH ≥ 7.30（超出 RCT 納入範圍）",
+    "ph-detail": "目前無 RCT 支持在此 pH 常規使用 NaHCO₃；若仍計算，建議審慎評估臨床適應症",
+    "ph-mismatch-text": ""
+   },
+   "html": "所需 NaHCO₃ = <em>Vd</em> × <em>體重</em> × (<em>目標 HCO₃⁻</em> − <em>實測 HCO₃⁻</em>)<br>= <em>0.7</em> × <em>80 kg</em> × (<em>20</em> − <em>8</em>) mEq/L<br>= <em>672.0 mEq</em>　→　先給 ½ = <em>336.0 mEq</em>，複查 ABG 後再決定是否給餘 ½<br><small>分布體積係數本身不確定（隨酸中毒嚴重度、輸注速度而異）：此數值僅為第一劑量級，請依 ABG 滴定</small>",
+   "visible": {
+    "result-section": true,
+    "checklist-section": true,
+    "ihca-alert": false,
+    "ph-severity": true,
+    "ph-mismatch-alert": false,
+    "na-alert": true
+   },
+   "phLevel": "mild",
+   "alerts": [],
+   "confirms": []
+  }
+ },
+ {
+  "input": {
+   "weight": 45,
+   "actual": 15,
+   "target": 18,
+   "vd": 0.5,
+   "scenario": "C",
+   "pH": ""
+  },
+  "output": {
+   "text": {
+    "r-total": "67.5",
+    "r-first": "33.8",
+    "r-second": "33.8",
+    "v-first-count": "3 支",
+    "v-first-detail": "2 支全量 + 1 支取 0.5 mL（共 40.5 mL）",
+    "v-second-count": "3 支",
+    "v-second-detail": "2 支全量 + 1 支取 0.5 mL（共 40.5 mL）",
+    "v-total-count": "5 支",
+    "v-total-detail": "4 支全量 + 1 支取 1.0 mL（共 81.0 mL）",
+    "na-alert-text": "",
+    "ph-display": "",
+    "ph-badge": "",
+    "ph-detail": "",
+    "ph-mismatch-text": ""
+   },
+   "html": "所需 NaHCO₃ = <em>Vd</em> × <em>體重</em> × (<em>目標 HCO₃⁻</em> − <em>實測 HCO₃⁻</em>)<br>= <em>0.5</em> × <em>45 kg</em> × (<em>18</em> − <em>15</em>) mEq/L<br>= <em>67.5 mEq</em>　→　先給 ½ = <em>33.8 mEq</em>，複查 ABG 後再決定是否給餘 ½<br><small>分布體積係數本身不確定（隨酸中毒嚴重度、輸注速度而異）：此數值僅為第一劑量級，請依 ABG 滴定</small>",
+   "visible": {
+    "result-section": true,
+    "checklist-section": true,
+    "ihca-alert": true,
+    "ph-severity": false,
+    "ph-mismatch-alert": false,
+    "na-alert": false
+   },
+   "phLevel": null,
+   "alerts": [],
+   "confirms": []
+  }
+ },
+ {
+  "input": {
+   "weight": 45,
+   "actual": 15,
+   "target": 18,
+   "vd": 0.7,
+   "scenario": "D",
+   "pH": 6.95
+  },
+  "output": {
+   "text": {
+    "r-total": "94.5",
+    "r-first": "47.2",
+    "r-second": "47.2",
+    "v-first-count": "3 支",
+    "v-first-detail": "2 支全量 + 1 支取 16.7 mL（共 56.7 mL）",
+    "v-second-count": "3 支",
+    "v-second-detail": "2 支全量 + 1 支取 16.7 mL（共 56.7 mL）",
+    "v-total-count": "6 支",
+    "v-total-detail": "5 支全量 + 1 支取 13.4 mL（共 113.4 mL）",
+    "na-alert-text": "",
+    "ph-display": "6.95",
+    "ph-badge": "重度酸中毒（pH < 7.10）",
+    "ph-detail": "BICARICU-2 分層：此組 AKI 更嚴重，KRT 獲益可能更顯著；BICAR-ICU 納入範圍內",
+    "ph-mismatch-text": ""
+   },
+   "html": "所需 NaHCO₃ = <em>Vd</em> × <em>體重</em> × (<em>目標 HCO₃⁻</em> − <em>實測 HCO₃⁻</em>)<br>= <em>0.7</em> × <em>45 kg</em> × (<em>18</em> − <em>15</em>) mEq/L<br>= <em>94.5 mEq</em>　→　先給 ½ = <em>47.2 mEq</em>，複查 ABG 後再決定是否給餘 ½<br><small>分布體積係數本身不確定（隨酸中毒嚴重度、輸注速度而異）：此數值僅為第一劑量級，請依 ABG 滴定</small>",
+   "visible": {
+    "result-section": true,
+    "checklist-section": true,
+    "ihca-alert": false,
+    "ph-severity": true,
+    "ph-mismatch-alert": false,
+    "na-alert": false
+   },
+   "phLevel": "critical",
+   "alerts": [],
+   "confirms": []
+  }
+ },
+ {
+  "input": {
+   "weight": 100,
+   "actual": 4,
+   "target": 18,
+   "vd": 0.5,
+   "scenario": null,
+   "pH": 7.1
+  },
+  "output": {
+   "text": {
+    "r-total": "700.0",
+    "r-first": "350.0",
+    "r-second": "350.0",
+    "v-first-count": "21 支",
+    "v-first-detail": "共 420.0 mL",
+    "v-second-count": "21 支",
+    "v-second-detail": "共 420.0 mL",
+    "v-total-count": "42 支",
+    "v-total-detail": "共 840.0 mL",
+    "na-alert-text": "第一劑鈉負荷約 350 mEq Na⁺（≈ 20.5 g NaCl）。基礎血鈉偏高者（Na⁺ > 140 mmol/L）需密切監測；建議慢速輸注並分次給予。",
+    "ph-display": "7.10",
+    "ph-badge": "中重度酸中毒（pH 7.10–7.20）",
+    "ph-detail": "符合 BICAR-ICU 及 BICARICU-2 納入標準（pH ≤ 7.20）；合併 AKI stage 2–3 者 KRT 獲益最強",
+    "ph-mismatch-text": ""
+   },
+   "html": "所需 NaHCO₃ = <em>Vd</em> × <em>體重</em> × (<em>目標 HCO₃⁻</em> − <em>實測 HCO₃⁻</em>)<br>= <em>0.5</em> × <em>100 kg</em> × (<em>18</em> − <em>4</em>) mEq/L<br>= <em>700.0 mEq</em>　→　先給 ½ = <em>350.0 mEq</em>，複查 ABG 後再決定是否給餘 ½<br><small>分布體積係數本身不確定（隨酸中毒嚴重度、輸注速度而異）：此數值僅為第一劑量級，請依 ABG 滴定</small>",
+   "visible": {
+    "result-section": true,
+    "checklist-section": true,
+    "ihca-alert": false,
+    "ph-severity": true,
+    "ph-mismatch-alert": false,
+    "na-alert": true
+   },
+   "phLevel": "severe",
+   "alerts": [],
+   "confirms": []
+  }
+ },
+ {
+  "input": {
+   "weight": 100,
+   "actual": 4,
+   "target": 18,
+   "vd": 0.7,
+   "scenario": "A",
+   "pH": 7.15
+  },
+  "output": {
+   "text": {
+    "r-total": "980.0",
+    "r-first": "490.0",
+    "r-second": "490.0",
+    "v-first-count": "30 支",
+    "v-first-detail": "29 支全量 + 1 支取 8.0 mL（共 588.0 mL）",
+    "v-second-count": "30 支",
+    "v-second-detail": "29 支全量 + 1 支取 8.0 mL（共 588.0 mL）",
+    "v-total-count": "59 支",
+    "v-total-detail": "58 支全量 + 1 支取 16.0 mL（共 1176.0 mL）",
+    "na-alert-text": "第一劑鈉負荷約 490 mEq Na⁺（≈ 28.6 g NaCl）。基礎血鈉偏高者（Na⁺ > 140 mmol/L）需密切監測；建議慢速輸注並分次給予。",
+    "ph-display": "7.15",
+    "ph-badge": "中重度酸中毒（pH 7.10–7.20）",
+    "ph-detail": "符合 BICAR-ICU 及 BICARICU-2 納入標準（pH ≤ 7.20）；合併 AKI stage 2–3 者 KRT 獲益最強",
+    "ph-mismatch-text": ""
+   },
+   "html": "所需 NaHCO₃ = <em>Vd</em> × <em>體重</em> × (<em>目標 HCO₃⁻</em> − <em>實測 HCO₃⁻</em>)<br>= <em>0.7</em> × <em>100 kg</em> × (<em>18</em> − <em>4</em>) mEq/L<br>= <em>980.0 mEq</em>　→　先給 ½ = <em>490.0 mEq</em>，複查 ABG 後再決定是否給餘 ½<br><small>分布體積係數本身不確定（隨酸中毒嚴重度、輸注速度而異）：此數值僅為第一劑量級，請依 ABG 滴定</small>",
+   "visible": {
+    "result-section": true,
+    "checklist-section": true,
+    "ihca-alert": false,
+    "ph-severity": true,
+    "ph-mismatch-alert": false,
+    "na-alert": true
+   },
+   "phLevel": "severe",
+   "alerts": [],
+   "confirms": []
+  }
+ },
+ {
+  "input": {
+   "weight": 150,
+   "actual": 3,
+   "target": 18,
+   "vd": 0.5,
+   "scenario": "B",
+   "pH": 7.2
+  },
+  "output": {
+   "text": {
+    "r-total": "1125.0",
+    "r-first": "562.5",
+    "r-second": "562.5",
+    "v-first-count": "34 支",
+    "v-first-detail": "33 支全量 + 1 支取 15.0 mL（共 675.0 mL）",
+    "v-second-count": "34 支",
+    "v-second-detail": "33 支全量 + 1 支取 15.0 mL（共 675.0 mL）",
+    "v-total-count": "68 支",
+    "v-total-detail": "67 支全量 + 1 支取 10.0 mL（共 1350.0 mL）",
+    "na-alert-text": "第一劑鈉負荷約 563 mEq Na⁺（≈ 32.9 g NaCl）。基礎血鈉偏高者（Na⁺ > 140 mmol/L）需密切監測；建議慢速輸注並分次給予。",
+    "ph-display": "7.20",
+    "ph-badge": "中重度酸中毒（pH 7.10–7.20）",
+    "ph-detail": "符合 BICAR-ICU 及 BICARICU-2 納入標準（pH ≤ 7.20）；合併 AKI stage 2–3 者 KRT 獲益最強",
+    "ph-mismatch-text": ""
+   },
+   "html": "所需 NaHCO₃ = <em>Vd</em> × <em>體重</em> × (<em>目標 HCO₃⁻</em> − <em>實測 HCO₃⁻</em>)<br>= <em>0.5</em> × <em>150 kg</em> × (<em>18</em> − <em>3</em>) mEq/L<br>= <em>1125.0 mEq</em>　→　先給 ½ = <em>562.5 mEq</em>，複查 ABG 後再決定是否給餘 ½<br><small>分布體積係數本身不確定（隨酸中毒嚴重度、輸注速度而異）：此數值僅為第一劑量級，請依 ABG 滴定</small>",
+   "visible": {
+    "result-section": true,
+    "checklist-section": true,
+    "ihca-alert": false,
+    "ph-severity": true,
+    "ph-mismatch-alert": false,
+    "na-alert": true
+   },
+   "phLevel": "severe",
+   "alerts": [],
+   "confirms": []
+  }
+ },
+ {
+  "input": {
+   "weight": 150,
+   "actual": 3,
+   "target": 18,
+   "vd": 0.7,
+   "scenario": "C",
+   "pH": 7.25
+  },
+  "output": {
+   "text": {
+    "r-total": "1575.0",
+    "r-first": "787.5",
+    "r-second": "787.5",
+    "v-first-count": "48 支",
+    "v-first-detail": "47 支全量 + 1 支取 5.0 mL（共 945.0 mL）",
+    "v-second-count": "48 支",
+    "v-second-detail": "47 支全量 + 1 支取 5.0 mL（共 945.0 mL）",
+    "v-total-count": "95 支",
+    "v-total-detail": "94 支全量 + 1 支取 10.0 mL（共 1890.0 mL）",
+    "na-alert-text": "第一劑鈉負荷約 788 mEq Na⁺（≈ 46.0 g NaCl）。基礎血鈉偏高者（Na⁺ > 140 mmol/L）需密切監測；建議慢速輸注並分次給予。",
+    "ph-display": "7.25",
+    "ph-badge": "中度酸中毒（pH 7.20–7.30）",
+    "ph-detail": "SODa-BIC（NEJM 2026，雙盲）族群範圍：合併升壓劑亦不改善 MAKE30、死亡或升壓劑天數 → 不建議常規使用",
+    "ph-mismatch-text": ""
+   },
+   "html": "所需 NaHCO₃ = <em>Vd</em> × <em>體重</em> × (<em>目標 HCO₃⁻</em> − <em>實測 HCO₃⁻</em>)<br>= <em>0.7</em> × <em>150 kg</em> × (<em>18</em> − <em>3</em>) mEq/L<br>= <em>1575.0 mEq</em>　→　先給 ½ = <em>787.5 mEq</em>，複查 ABG 後再決定是否給餘 ½<br><small>分布體積係數本身不確定（隨酸中毒嚴重度、輸注速度而異）：此數值僅為第一劑量級，請依 ABG 滴定</small>",
+   "visible": {
+    "result-section": true,
+    "checklist-section": true,
+    "ihca-alert": true,
+    "ph-severity": true,
+    "ph-mismatch-alert": false,
+    "na-alert": true
+   },
+   "phLevel": "moderate",
+   "alerts": [],
+   "confirms": []
+  }
+ },
+ {
+  "input": {
+   "weight": 20,
+   "actual": 17,
+   "target": 18,
+   "vd": 0.5,
+   "scenario": "D",
+   "pH": 7.3
+  },
+  "output": {
+   "text": {
+    "r-total": "10.0",
+    "r-first": "5.0",
+    "r-second": "5.0",
+    "v-first-count": "1 支",
+    "v-first-detail": "1 支取 6.0 mL",
+    "v-second-count": "1 支",
+    "v-second-detail": "1 支取 6.0 mL",
+    "v-total-count": "1 支",
+    "v-total-detail": "1 支取 12.0 mL",
+    "na-alert-text": "",
+    "ph-display": "7.30",
+    "ph-badge": "pH ≥ 7.30（超出 RCT 納入範圍）",
+    "ph-detail": "目前無 RCT 支持在此 pH 常規使用 NaHCO₃；若仍計算，建議審慎評估臨床適應症",
+    "ph-mismatch-text": ""
+   },
+   "html": "所需 NaHCO₃ = <em>Vd</em> × <em>體重</em> × (<em>目標 HCO₃⁻</em> − <em>實測 HCO₃⁻</em>)<br>= <em>0.5</em> × <em>20 kg</em> × (<em>18</em> − <em>17</em>) mEq/L<br>= <em>10.0 mEq</em>　→　先給 ½ = <em>5.0 mEq</em>，複查 ABG 後再決定是否給餘 ½<br><small>分布體積係數本身不確定（隨酸中毒嚴重度、輸注速度而異）：此數值僅為第一劑量級，請依 ABG 滴定</small>",
+   "visible": {
+    "result-section": true,
+    "checklist-section": true,
+    "ihca-alert": false,
+    "ph-severity": true,
+    "ph-mismatch-alert": false,
+    "na-alert": false
+   },
+   "phLevel": "mild",
+   "alerts": [],
+   "confirms": []
+  }
+ },
+ {
+  "input": {
+   "weight": 20,
+   "actual": 17,
+   "target": 18,
+   "vd": 0.7,
+   "scenario": null,
+   "pH": 7.4
+  },
+  "output": {
+   "text": {
+    "r-total": "14.0",
+    "r-first": "7.0",
+    "r-second": "7.0",
+    "v-first-count": "1 支",
+    "v-first-detail": "1 支取 8.4 mL",
+    "v-second-count": "1 支",
+    "v-second-detail": "1 支取 8.4 mL",
+    "v-total-count": "1 支",
+    "v-total-detail": "1 支取 16.8 mL",
+    "na-alert-text": "",
+    "ph-display": "7.40",
+    "ph-badge": "pH ≥ 7.30（超出 RCT 納入範圍）",
+    "ph-detail": "目前無 RCT 支持在此 pH 常規使用 NaHCO₃；若仍計算，建議審慎評估臨床適應症",
+    "ph-mismatch-text": ""
+   },
+   "html": "所需 NaHCO₃ = <em>Vd</em> × <em>體重</em> × (<em>目標 HCO₃⁻</em> − <em>實測 HCO₃⁻</em>)<br>= <em>0.7</em> × <em>20 kg</em> × (<em>18</em> − <em>17</em>) mEq/L<br>= <em>14.0 mEq</em>　→　先給 ½ = <em>7.0 mEq</em>，複查 ABG 後再決定是否給餘 ½<br><small>分布體積係數本身不確定（隨酸中毒嚴重度、輸注速度而異）：此數值僅為第一劑量級，請依 ABG 滴定</small>",
+   "visible": {
+    "result-section": true,
+    "checklist-section": true,
+    "ihca-alert": false,
+    "ph-severity": true,
+    "ph-mismatch-alert": false,
+    "na-alert": false
+   },
+   "phLevel": "mild",
+   "alerts": [],
+   "confirms": []
+  }
+ },
+ {
+  "input": {
+   "weight": 65.5,
+   "actual": 9.5,
+   "target": 17.5,
+   "vd": 0.5,
+   "scenario": "A",
+   "pH": ""
+  },
+  "output": {
+   "text": {
+    "r-total": "262.0",
+    "r-first": "131.0",
+    "r-second": "131.0",
+    "v-first-count": "8 支",
+    "v-first-detail": "7 支全量 + 1 支取 17.2 mL（共 157.2 mL）",
+    "v-second-count": "8 支",
+    "v-second-detail": "7 支全量 + 1 支取 17.2 mL（共 157.2 mL）",
+    "v-total-count": "16 支",
+    "v-total-detail": "15 支全量 + 1 支取 14.4 mL（共 314.4 mL）",
+    "na-alert-text": "第一劑鈉負荷約 131 mEq Na⁺（≈ 7.7 g NaCl）。基礎血鈉偏高者（Na⁺ > 140 mmol/L）需密切監測；建議慢速輸注並分次給予。",
+    "ph-display": "",
+    "ph-badge": "",
+    "ph-detail": "",
+    "ph-mismatch-text": ""
+   },
+   "html": "所需 NaHCO₃ = <em>Vd</em> × <em>體重</em> × (<em>目標 HCO₃⁻</em> − <em>實測 HCO₃⁻</em>)<br>= <em>0.5</em> × <em>65.5 kg</em> × (<em>17.5</em> − <em>9.5</em>) mEq/L<br>= <em>262.0 mEq</em>　→　先給 ½ = <em>131.0 mEq</em>，複查 ABG 後再決定是否給餘 ½<br><small>分布體積係數本身不確定（隨酸中毒嚴重度、輸注速度而異）：此數值僅為第一劑量級，請依 ABG 滴定</small>",
+   "visible": {
+    "result-section": true,
+    "checklist-section": true,
+    "ihca-alert": false,
+    "ph-severity": false,
+    "ph-mismatch-alert": false,
+    "na-alert": true
+   },
+   "phLevel": null,
+   "alerts": [],
+   "confirms": []
+  }
+ },
+ {
+  "input": {
+   "weight": 65.5,
+   "actual": 9.5,
+   "target": 17.5,
+   "vd": 0.7,
+   "scenario": "B",
+   "pH": 6.95
+  },
+  "output": {
+   "text": {
+    "r-total": "366.8",
+    "r-first": "183.4",
+    "r-second": "183.4",
+    "v-first-count": "12 支",
+    "v-first-detail": "11 支全量 + 1 支取 0.1 mL（共 220.1 mL）",
+    "v-second-count": "12 支",
+    "v-second-detail": "11 支全量 + 1 支取 0.1 mL（共 220.1 mL）",
+    "v-total-count": "23 支",
+    "v-total-detail": "22 支全量 + 1 支取 0.2 mL（共 440.2 mL）",
+    "na-alert-text": "第一劑鈉負荷約 183 mEq Na⁺（≈ 10.7 g NaCl）。基礎血鈉偏高者（Na⁺ > 140 mmol/L）需密切監測；建議慢速輸注並分次給予。",
+    "ph-display": "6.95",
+    "ph-badge": "重度酸中毒（pH < 7.10）",
+    "ph-detail": "BICARICU-2 分層：此組 AKI 更嚴重，KRT 獲益可能更顯著；BICAR-ICU 納入範圍內",
+    "ph-mismatch-text": "⚠️ 場景與 pH 不符：pH < 7.10 符合場景 A（pH ≤ 7.20 + AKI），建議優先選用場景 A"
+   },
+   "html": "所需 NaHCO₃ = <em>Vd</em> × <em>體重</em> × (<em>目標 HCO₃⁻</em> − <em>實測 HCO₃⁻</em>)<br>= <em>0.7</em> × <em>65.5 kg</em> × (<em>17.5</em> − <em>9.5</em>) mEq/L<br>= <em>366.8 mEq</em>　→　先給 ½ = <em>183.4 mEq</em>，複查 ABG 後再決定是否給餘 ½<br><small>分布體積係數本身不確定（隨酸中毒嚴重度、輸注速度而異）：此數值僅為第一劑量級，請依 ABG 滴定</small>",
+   "visible": {
+    "result-section": true,
+    "checklist-section": true,
+    "ihca-alert": false,
+    "ph-severity": true,
+    "ph-mismatch-alert": true,
+    "na-alert": true
+   },
+   "phLevel": "critical",
+   "alerts": [],
+   "confirms": []
+  }
+ },
+ {
+  "input": {
+   "weight": 90,
+   "actual": 2,
+   "target": 22,
+   "vd": 0.5,
+   "scenario": "C",
+   "pH": 7.1
+  },
+  "output": {
+   "text": {
+    "r-total": "900.0",
+    "r-first": "450.0",
+    "r-second": "450.0",
+    "v-first-count": "27 支",
+    "v-first-detail": "共 540.0 mL",
+    "v-second-count": "27 支",
+    "v-second-detail": "共 540.0 mL",
+    "v-total-count": "54 支",
+    "v-total-detail": "共 1080.0 mL",
+    "na-alert-text": "第一劑鈉負荷約 450 mEq Na⁺（≈ 26.3 g NaCl）。基礎血鈉偏高者（Na⁺ > 140 mmol/L）需密切監測；建議慢速輸注並分次給予。",
+    "ph-display": "7.10",
+    "ph-badge": "中重度酸中毒（pH 7.10–7.20）",
+    "ph-detail": "符合 BICAR-ICU 及 BICARICU-2 納入標準（pH ≤ 7.20）；合併 AKI stage 2–3 者 KRT 獲益最強",
+    "ph-mismatch-text": ""
+   },
+   "html": "所需 NaHCO₃ = <em>Vd</em> × <em>體重</em> × (<em>目標 HCO₃⁻</em> − <em>實測 HCO₃⁻</em>)<br>= <em>0.5</em> × <em>90 kg</em> × (<em>22</em> − <em>2</em>) mEq/L<br>= <em>900.0 mEq</em>　→　先給 ½ = <em>450.0 mEq</em>，複查 ABG 後再決定是否給餘 ½<br><small>分布體積係數本身不確定（隨酸中毒嚴重度、輸注速度而異）：此數值僅為第一劑量級，請依 ABG 滴定</small>",
+   "visible": {
+    "result-section": true,
+    "checklist-section": true,
+    "ihca-alert": true,
+    "ph-severity": true,
+    "ph-mismatch-alert": false,
+    "na-alert": true
+   },
+   "phLevel": "severe",
+   "alerts": [],
+   "confirms": []
+  }
+ },
+ {
+  "input": {
+   "weight": 90,
+   "actual": 2,
+   "target": 22,
+   "vd": 0.7,
+   "scenario": "D",
+   "pH": 7.15
+  },
+  "output": {
+   "text": {
+    "r-total": "1260.0",
+    "r-first": "630.0",
+    "r-second": "630.0",
+    "v-first-count": "38 支",
+    "v-first-detail": "37 支全量 + 1 支取 16.0 mL（共 756.0 mL）",
+    "v-second-count": "38 支",
+    "v-second-detail": "37 支全量 + 1 支取 16.0 mL（共 756.0 mL）",
+    "v-total-count": "76 支",
+    "v-total-detail": "75 支全量 + 1 支取 12.0 mL（共 1512.0 mL）",
+    "na-alert-text": "第一劑鈉負荷約 630 mEq Na⁺（≈ 36.8 g NaCl）。基礎血鈉偏高者（Na⁺ > 140 mmol/L）需密切監測；建議慢速輸注並分次給予。",
+    "ph-display": "7.15",
+    "ph-badge": "中重度酸中毒（pH 7.10–7.20）",
+    "ph-detail": "符合 BICAR-ICU 及 BICARICU-2 納入標準（pH ≤ 7.20）；合併 AKI stage 2–3 者 KRT 獲益最強",
+    "ph-mismatch-text": ""
+   },
+   "html": "所需 NaHCO₃ = <em>Vd</em> × <em>體重</em> × (<em>目標 HCO₃⁻</em> − <em>實測 HCO₃⁻</em>)<br>= <em>0.7</em> × <em>90 kg</em> × (<em>22</em> − <em>2</em>) mEq/L<br>= <em>1260.0 mEq</em>　→　先給 ½ = <em>630.0 mEq</em>，複查 ABG 後再決定是否給餘 ½<br><small>分布體積係數本身不確定（隨酸中毒嚴重度、輸注速度而異）：此數值僅為第一劑量級，請依 ABG 滴定</small>",
+   "visible": {
+    "result-section": true,
+    "checklist-section": true,
+    "ihca-alert": false,
+    "ph-severity": true,
+    "ph-mismatch-alert": false,
+    "na-alert": true
+   },
+   "phLevel": "severe",
+   "alerts": [],
+   "confirms": []
+  }
+ },
+ {
+  "input": {
+   "weight": 120,
+   "actual": 6,
+   "target": 18,
+   "vd": 0.5,
+   "scenario": null,
+   "pH": 7.2
+  },
+  "output": {
+   "text": {
+    "r-total": "720.0",
+    "r-first": "360.0",
+    "r-second": "360.0",
+    "v-first-count": "22 支",
+    "v-first-detail": "21 支全量 + 1 支取 12.0 mL（共 432.0 mL）",
+    "v-second-count": "22 支",
+    "v-second-detail": "21 支全量 + 1 支取 12.0 mL（共 432.0 mL）",
+    "v-total-count": "44 支",
+    "v-total-detail": "43 支全量 + 1 支取 4.0 mL（共 864.0 mL）",
+    "na-alert-text": "第一劑鈉負荷約 360 mEq Na⁺（≈ 21.0 g NaCl）。基礎血鈉偏高者（Na⁺ > 140 mmol/L）需密切監測；建議慢速輸注並分次給予。",
+    "ph-display": "7.20",
+    "ph-badge": "中重度酸中毒（pH 7.10–7.20）",
+    "ph-detail": "符合 BICAR-ICU 及 BICARICU-2 納入標準（pH ≤ 7.20）；合併 AKI stage 2–3 者 KRT 獲益最強",
+    "ph-mismatch-text": ""
+   },
+   "html": "所需 NaHCO₃ = <em>Vd</em> × <em>體重</em> × (<em>目標 HCO₃⁻</em> − <em>實測 HCO₃⁻</em>)<br>= <em>0.5</em> × <em>120 kg</em> × (<em>18</em> − <em>6</em>) mEq/L<br>= <em>720.0 mEq</em>　→　先給 ½ = <em>360.0 mEq</em>，複查 ABG 後再決定是否給餘 ½<br><small>分布體積係數本身不確定（隨酸中毒嚴重度、輸注速度而異）：此數值僅為第一劑量級，請依 ABG 滴定</small>",
+   "visible": {
+    "result-section": true,
+    "checklist-section": true,
+    "ihca-alert": false,
+    "ph-severity": true,
+    "ph-mismatch-alert": false,
+    "na-alert": true
+   },
+   "phLevel": "severe",
+   "alerts": [],
+   "confirms": []
+  }
+ },
+ {
+  "input": {
+   "weight": 120,
+   "actual": 6,
+   "target": 18,
+   "vd": 0.7,
+   "scenario": "A",
+   "pH": 7.25
+  },
+  "output": {
+   "text": {
+    "r-total": "1008.0",
+    "r-first": "504.0",
+    "r-second": "504.0",
+    "v-first-count": "31 支",
+    "v-first-detail": "30 支全量 + 1 支取 4.8 mL（共 604.8 mL）",
+    "v-second-count": "31 支",
+    "v-second-detail": "30 支全量 + 1 支取 4.8 mL（共 604.8 mL）",
+    "v-total-count": "61 支",
+    "v-total-detail": "60 支全量 + 1 支取 9.6 mL（共 1209.6 mL）",
+    "na-alert-text": "第一劑鈉負荷約 504 mEq Na⁺（≈ 29.5 g NaCl）。基礎血鈉偏高者（Na⁺ > 140 mmol/L）需密切監測；建議慢速輸注並分次給予。",
+    "ph-display": "7.25",
+    "ph-badge": "中度酸中毒（pH 7.20–7.30）",
+    "ph-detail": "SODa-BIC（NEJM 2026，雙盲）族群範圍：合併升壓劑亦不改善 MAKE30、死亡或升壓劑天數 → 不建議常規使用",
+    "ph-mismatch-text": "⚠️ 場景與 pH 不符：pH > 7.20，超出場景 A（BICAR-ICU/BICARICU-2）納入標準，建議改選場景 B"
+   },
+   "html": "所需 NaHCO₃ = <em>Vd</em> × <em>體重</em> × (<em>目標 HCO₃⁻</em> − <em>實測 HCO₃⁻</em>)<br>= <em>0.7</em> × <em>120 kg</em> × (<em>18</em> − <em>6</em>) mEq/L<br>= <em>1008.0 mEq</em>　→　先給 ½ = <em>504.0 mEq</em>，複查 ABG 後再決定是否給餘 ½<br><small>分布體積係數本身不確定（隨酸中毒嚴重度、輸注速度而異）：此數值僅為第一劑量級，請依 ABG 滴定</small>",
+   "visible": {
+    "result-section": true,
+    "checklist-section": true,
+    "ihca-alert": false,
+    "ph-severity": true,
+    "ph-mismatch-alert": true,
+    "na-alert": true
+   },
+   "phLevel": "moderate",
+   "alerts": [],
+   "confirms": []
+  }
+ },
+ {
+  "input": {
+   "weight": 55,
+   "actual": 14.5,
+   "target": 18,
+   "vd": 0.5,
+   "scenario": "B",
+   "pH": 7.3
+  },
+  "output": {
+   "text": {
+    "r-total": "96.3",
+    "r-first": "48.1",
+    "r-second": "48.1",
+    "v-first-count": "3 支",
+    "v-first-detail": "2 支全量 + 1 支取 17.8 mL（共 57.8 mL）",
+    "v-second-count": "3 支",
+    "v-second-detail": "2 支全量 + 1 支取 17.8 mL（共 57.8 mL）",
+    "v-total-count": "6 支",
+    "v-total-detail": "5 支全量 + 1 支取 15.5 mL（共 115.5 mL）",
+    "na-alert-text": "",
+    "ph-display": "7.30",
+    "ph-badge": "pH ≥ 7.30（超出 RCT 納入範圍）",
+    "ph-detail": "目前無 RCT 支持在此 pH 常規使用 NaHCO₃；若仍計算，建議審慎評估臨床適應症",
+    "ph-mismatch-text": ""
+   },
+   "html": "所需 NaHCO₃ = <em>Vd</em> × <em>體重</em> × (<em>目標 HCO₃⁻</em> − <em>實測 HCO₃⁻</em>)<br>= <em>0.5</em> × <em>55 kg</em> × (<em>18</em> − <em>14.5</em>) mEq/L<br>= <em>96.3 mEq</em>　→　先給 ½ = <em>48.1 mEq</em>，複查 ABG 後再決定是否給餘 ½<br><small>分布體積係數本身不確定（隨酸中毒嚴重度、輸注速度而異）：此數值僅為第一劑量級，請依 ABG 滴定</small>",
+   "visible": {
+    "result-section": true,
+    "checklist-section": true,
+    "ihca-alert": false,
+    "ph-severity": true,
+    "ph-mismatch-alert": false,
+    "na-alert": false
+   },
+   "phLevel": "mild",
+   "alerts": [],
+   "confirms": []
+  }
+ },
+ {
+  "input": {
+   "weight": 55,
+   "actual": 14.5,
+   "target": 18,
+   "vd": 0.7,
+   "scenario": "C",
+   "pH": 7.4
+  },
+  "output": {
+   "text": {
+    "r-total": "134.8",
+    "r-first": "67.4",
+    "r-second": "67.4",
+    "v-first-count": "5 支",
+    "v-first-detail": "4 支全量 + 1 支取 0.8 mL（共 80.8 mL）",
+    "v-second-count": "5 支",
+    "v-second-detail": "4 支全量 + 1 支取 0.8 mL（共 80.8 mL）",
+    "v-total-count": "9 支",
+    "v-total-detail": "8 支全量 + 1 支取 1.7 mL（共 161.7 mL）",
+    "na-alert-text": "",
+    "ph-display": "7.40",
+    "ph-badge": "pH ≥ 7.30（超出 RCT 納入範圍）",
+    "ph-detail": "目前無 RCT 支持在此 pH 常規使用 NaHCO₃；若仍計算，建議審慎評估臨床適應症",
+    "ph-mismatch-text": ""
+   },
+   "html": "所需 NaHCO₃ = <em>Vd</em> × <em>體重</em> × (<em>目標 HCO₃⁻</em> − <em>實測 HCO₃⁻</em>)<br>= <em>0.7</em> × <em>55 kg</em> × (<em>18</em> − <em>14.5</em>) mEq/L<br>= <em>134.8 mEq</em>　→　先給 ½ = <em>67.4 mEq</em>，複查 ABG 後再決定是否給餘 ½<br><small>分布體積係數本身不確定（隨酸中毒嚴重度、輸注速度而異）：此數值僅為第一劑量級，請依 ABG 滴定</small>",
+   "visible": {
+    "result-section": true,
+    "checklist-section": true,
+    "ihca-alert": true,
+    "ph-severity": true,
+    "ph-mismatch-alert": false,
+    "na-alert": false
+   },
+   "phLevel": "mild",
+   "alerts": [],
+   "confirms": []
+  }
+ },
+ {
+  "input": {
+   "weight": 40,
+   "actual": 1,
+   "target": 15.5,
+   "vd": 0.5,
+   "scenario": "D",
+   "pH": ""
+  },
+  "output": {
+   "text": {
+    "r-total": "290.0",
+    "r-first": "145.0",
+    "r-second": "145.0",
+    "v-first-count": "9 支",
+    "v-first-detail": "8 支全量 + 1 支取 14.0 mL（共 174.0 mL）",
+    "v-second-count": "9 支",
+    "v-second-detail": "8 支全量 + 1 支取 14.0 mL（共 174.0 mL）",
+    "v-total-count": "18 支",
+    "v-total-detail": "17 支全量 + 1 支取 8.0 mL（共 348.0 mL）",
+    "na-alert-text": "第一劑鈉負荷約 145 mEq Na⁺（≈ 8.5 g NaCl）。基礎血鈉偏高者（Na⁺ > 140 mmol/L）需密切監測；建議慢速輸注並分次給予。",
+    "ph-display": "",
+    "ph-badge": "",
+    "ph-detail": "",
+    "ph-mismatch-text": ""
+   },
+   "html": "所需 NaHCO₃ = <em>Vd</em> × <em>體重</em> × (<em>目標 HCO₃⁻</em> − <em>實測 HCO₃⁻</em>)<br>= <em>0.5</em> × <em>40 kg</em> × (<em>15.5</em> − <em>1</em>) mEq/L<br>= <em>290.0 mEq</em>　→　先給 ½ = <em>145.0 mEq</em>，複查 ABG 後再決定是否給餘 ½<br><small>分布體積係數本身不確定（隨酸中毒嚴重度、輸注速度而異）：此數值僅為第一劑量級，請依 ABG 滴定</small>",
+   "visible": {
+    "result-section": true,
+    "checklist-section": true,
+    "ihca-alert": false,
+    "ph-severity": false,
+    "ph-mismatch-alert": false,
+    "na-alert": true
+   },
+   "phLevel": null,
+   "alerts": [],
+   "confirms": []
+  }
+ },
+ {
+  "input": {
+   "weight": 40,
+   "actual": 1,
+   "target": 15.5,
+   "vd": 0.7,
+   "scenario": null,
+   "pH": 6.95
+  },
+  "output": {
+   "text": {
+    "r-total": "406.0",
+    "r-first": "203.0",
+    "r-second": "203.0",
+    "v-first-count": "13 支",
+    "v-first-detail": "12 支全量 + 1 支取 3.6 mL（共 243.6 mL）",
+    "v-second-count": "13 支",
+    "v-second-detail": "12 支全量 + 1 支取 3.6 mL（共 243.6 mL）",
+    "v-total-count": "25 支",
+    "v-total-detail": "24 支全量 + 1 支取 7.2 mL（共 487.2 mL）",
+    "na-alert-text": "第一劑鈉負荷約 203 mEq Na⁺（≈ 11.9 g NaCl）。基礎血鈉偏高者（Na⁺ > 140 mmol/L）需密切監測；建議慢速輸注並分次給予。",
+    "ph-display": "6.95",
+    "ph-badge": "重度酸中毒（pH < 7.10）",
+    "ph-detail": "BICARICU-2 分層：此組 AKI 更嚴重，KRT 獲益可能更顯著；BICAR-ICU 納入範圍內",
+    "ph-mismatch-text": ""
+   },
+   "html": "所需 NaHCO₃ = <em>Vd</em> × <em>體重</em> × (<em>目標 HCO₃⁻</em> − <em>實測 HCO₃⁻</em>)<br>= <em>0.7</em> × <em>40 kg</em> × (<em>15.5</em> − <em>1</em>) mEq/L<br>= <em>406.0 mEq</em>　→　先給 ½ = <em>203.0 mEq</em>，複查 ABG 後再決定是否給餘 ½<br><small>分布體積係數本身不確定（隨酸中毒嚴重度、輸注速度而異）：此數值僅為第一劑量級，請依 ABG 滴定</small>",
+   "visible": {
+    "result-section": true,
+    "checklist-section": true,
+    "ihca-alert": false,
+    "ph-severity": true,
+    "ph-mismatch-alert": false,
+    "na-alert": true
+   },
+   "phLevel": "critical",
+   "alerts": [],
+   "confirms": []
+  }
+ }
+]

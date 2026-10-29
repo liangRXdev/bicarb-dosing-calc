@@ -1,0 +1,8 @@
+{
+  "name": "bicarb-dosing-calc",
+  "private": true,
+  "description": "Static NaHCO3 dosing calculator (no runtime dependencies)",
+  "scripts": {
+    "test": "node --test \"test/**/*.test.js\""
+  }
+}
