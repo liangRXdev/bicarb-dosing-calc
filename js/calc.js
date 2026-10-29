@@ -90,16 +90,19 @@
   }
 
   // ── Vials (7% NaHCO3, 20 mL) ──
+  // Count and breakdown are derived from the volume rounded to 0.1 mL (what
+  // is displayed and drawn up), so "N 支" always agrees with "共 X mL".
   function vialPlan(meq) {
     const volMl       = meq / MEQ_PER_ML;
-    const vialsNeeded = Math.ceil(volMl / VIAL_ML);
-    const usedVol     = volMl.toFixed(1);
+    const drawMl      = parseFloat(volMl.toFixed(1));
+    const vialsNeeded = Math.max(1, Math.ceil(drawMl / VIAL_ML));
+    const usedVol     = drawMl.toFixed(1);
     let detail;
-    if (meq <= MEQ_PER_VIAL) {
+    if (drawMl <= VIAL_ML) {
       detail = `1 支取 ${usedVol} mL`;
     } else {
       const fullVials = vialsNeeded - 1;
-      const lastVolMl = (volMl - fullVials * VIAL_ML).toFixed(1);
+      const lastVolMl = (drawMl - fullVials * VIAL_ML).toFixed(1);
       if (parseFloat(lastVolMl) > 0 && parseFloat(lastVolMl) < VIAL_ML) {
         detail = `${fullVials} 支全量 + 1 支取 ${lastVolMl} mL（共 ${usedVol} mL）`;
       } else {
